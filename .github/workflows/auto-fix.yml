@@ -1,11 +1,12 @@
 name: Auto-Fix Dispatcher
 
-# Triggered manually or by the validate workflow when it fails.
-# It opens a labeled issue so the Hermes agent gets notified and can auto-fix.
 on:
   workflow_dispatch:
   repository_dispatch:
     types: [validation-failed]
+
+permissions:
+  issues: write
 
 jobs:
   dispatch:
