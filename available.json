@@ -1,8 +1,19 @@
 {
- "_description": "قائمة السور المتوفرة — Available surahs with accuracy metrics",
- "total_surahs": 31,
- "total_ayat": 504,
+ "_description": "قائمة السور المتوفرة في هذا الأرشيف — Available surahs with accuracy metrics",
+ "_note_accuracy": "accuracy = متوسط نسبة مطابقة النص المسموع مع نص المصحف عند التقسيم والتحقق",
+ "total_surahs": 32,
+ "total_ayat": 535,
  "surahs": {
+  "076": {
+   "number": 76,
+   "name_ar": "الإنسان",
+   "name_en": "Al-Insan",
+   "ayahs_expected": 31,
+   "ayahs_available": 31,
+   "complete": true,
+   "split_accuracy_avg": 0.906,
+   "min_sim": 0.546
+  },
   "077": {
    "number": 77,
    "name_ar": "المرسلات",
