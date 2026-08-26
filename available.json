@@ -1,8 +1,18 @@
 {
  "_description": "قائمة السور المتوفرة — Available surahs with accuracy metrics",
- "total_surahs": 30,
- "total_ayat": 454,
+ "total_surahs": 31,
+ "total_ayat": 504,
  "surahs": {
+  "077": {
+   "number": 77,
+   "name_ar": "المرسلات",
+   "name_en": "Al-Mursalat",
+   "ayahs_expected": 50,
+   "ayahs_available": 50,
+   "complete": true,
+   "split_accuracy_avg": 0.898,
+   "min_sim": 0.75
+  },
   "078": {
    "number": 78,
    "name_ar": "النبأ",
