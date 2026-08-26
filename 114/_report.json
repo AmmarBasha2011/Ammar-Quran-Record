@@ -1,0 +1,55 @@
+{
+ "surah": "114",
+ "name": "الناس",
+ "source": "C:\\Users\\T.B\\Quran_Master\\work\\yt_cfJTrcdw72U.mp3",
+ "ayahs_expected": 6,
+ "ayahs_found": 6,
+ "complete": true,
+ "weak": [
+  5
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 22.89,
+   "end": 28.45,
+   "sim": 0.833
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 28.45,
+   "end": 34.77,
+   "sim": 1.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 34.77,
+   "end": 40.93,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 40.93,
+   "end": 50.49,
+   "sim": 0.889
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 50.49,
+   "end": 61.73,
+   "sim": 0.658
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 61.73,
+   "end": 72.43,
+   "sim": 1.0
+  }
+ ]
+}
