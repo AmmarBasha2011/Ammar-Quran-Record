@@ -1,0 +1,33 @@
+# Models (downloaded separately, large binaries — not in repo)
+models/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local working dirs
+work/
+cut_one/
+recut/
+recut_full/
+fix_078/
+fix_batch5/
+batch5/
+
+# Temp / logs
+*.log
+split.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local scripts (not part of published archive)
+build_links.py
+check_durations.py
+check_suspicious.py
+cut_3.py
+recut_bad_ayahs.py
+recut_fast.py
+colab_whisperx_template.py
+playlist_raw.txt
