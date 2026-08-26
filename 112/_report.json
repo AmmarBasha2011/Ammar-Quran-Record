@@ -1,0 +1,41 @@
+{
+ "surah": "112",
+ "name": "الإخلاص",
+ "source": "C:\\Users\\T.B\\Quran_Master\\work\\yt_3qG8sCdedEE.mp3",
+ "ayahs_expected": 4,
+ "ayahs_found": 4,
+ "complete": true,
+ "weak": [
+  4
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 31.15,
+   "end": 38.21,
+   "sim": 0.75
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 38.21,
+   "end": 39.79,
+   "sim": 0.833
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 39.79,
+   "end": 45.91,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 45.91,
+   "end": 54.47,
+   "sim": 0.73
+  }
+ ]
+}
