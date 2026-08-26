@@ -1,0 +1,153 @@
+{
+ "surah": "090",
+ "name": "البلد",
+ "source": "C:\\Users\\T.B\\Quran_Master\\recut\\090\\090_source.mp3",
+ "ayahs_expected": 20,
+ "ayahs_found": 20,
+ "complete": true,
+ "weak": [
+  11
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 11.22,
+   "end": 18.25,
+   "sim": 1.0
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 18.25,
+   "end": 23.43,
+   "sim": 1.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 23.43,
+   "end": 27.24,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 27.24,
+   "end": 34.59,
+   "sim": 0.833
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 34.59,
+   "end": 39.77,
+   "sim": 0.922
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 39.77,
+   "end": 42.81,
+   "sim": 0.852
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 42.81,
+   "end": 49.83,
+   "sim": 0.766
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 49.83,
+   "end": 53.89,
+   "sim": 1.0
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 53.89,
+   "end": 57.93,
+   "sim": 0.989
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 57.93,
+   "end": 61.83,
+   "sim": 0.902
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 61.83,
+   "end": 64.47,
+   "sim": 0.578
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 64.47,
+   "end": 71.09,
+   "sim": 0.883
+  },
+  {
+   "ayah": 13,
+   "file": "013.mp3",
+   "start": 71.09,
+   "end": 73.6,
+   "sim": 0.776
+  },
+  {
+   "ayah": 14,
+   "file": "014.mp3",
+   "start": 73.6,
+   "end": 81.11,
+   "sim": 0.972
+  },
+  {
+   "ayah": 15,
+   "file": "015.mp3",
+   "start": 81.11,
+   "end": 85.95,
+   "sim": 0.976
+  },
+  {
+   "ayah": 16,
+   "file": "016.mp3",
+   "start": 85.95,
+   "end": 91.0,
+   "sim": 0.937
+  },
+  {
+   "ayah": 17,
+   "file": "017.mp3",
+   "start": 91.0,
+   "end": 103.7,
+   "sim": 0.998
+  },
+  {
+   "ayah": 18,
+   "file": "018.mp3",
+   "start": 103.7,
+   "end": 112.37,
+   "sim": 0.944
+  },
+  {
+   "ayah": 19,
+   "file": "019.mp3",
+   "start": 112.37,
+   "end": 122.33,
+   "sim": 0.908
+  },
+  {
+   "ayah": 20,
+   "file": "020.mp3",
+   "start": 122.33,
+   "end": 128.3,
+   "sim": 0.944
+  }
+ ]
+}
