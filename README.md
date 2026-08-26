@@ -88,12 +88,21 @@ https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{SURAH:
 
 ## 🛠️ كيف تم إنشاء الملفات؟
 
-كل سورة قُطّعت آية آية باستخدام أداة `quran_split.py` المبنية على:
+كل سورة قُطّعت آية آية باستخدام أداة مبنية على:
 - **faster-whisper** (CPU, beam=5) مع موديل متدرّب على القرآن (tarteel)
 - **Forced Alignment** (word-level timestamps) لتحديد حدود كل آية بدقة
 - **مقارنة بالنص الرسمي** للتحقق من كل آية (similarity score)
 
-الأداة متاحة في مجلد `tools/` في المستودع الأصلي للمشروع.
+<details>
+<summary>عرض مثال لسطر أوامر التقطيع</summary>
+
+```bash
+python quran_split.py PATH_TO_AUDIO.mp3 044 OUTPUT_DIR --beam 5
+```
+
+حيث `044` هو رقم السورة و `OUTPUT_DIR` مجلد لحفظ الملفات الناتجة.
+
+</details>
 
 ---
 
