@@ -1,9 +1,39 @@
 {
- "_description": "قائمة السور المتوفرة في هذا الأرشيف — Available surahs with accuracy metrics",
+ "_description": "قائمة السور المتوفرة — Available surahs with accuracy metrics",
  "_note_accuracy": "accuracy = متوسط نسبة مطابقة النص المسموع مع نص المصحف عند التقسيم والتحقق",
- "total_surahs": 32,
- "total_ayat": 535,
+ "total_surahs": 35,
+ "total_ayat": 651,
  "surahs": {
+  "073": {
+   "number": 73,
+   "name_ar": "المزمل",
+   "name_en": "Al-Muzzammil",
+   "ayahs_expected": 20,
+   "ayahs_available": 20,
+   "complete": true,
+   "split_accuracy_avg": 0.844,
+   "min_sim": 0.336
+  },
+  "074": {
+   "number": 74,
+   "name_ar": "المدثر",
+   "name_en": "Al-Muddaththir",
+   "ayahs_expected": 56,
+   "ayahs_available": 56,
+   "complete": true,
+   "split_accuracy_avg": 0.889,
+   "min_sim": 0.204
+  },
+  "075": {
+   "number": 75,
+   "name_ar": "القيامة",
+   "name_en": "Al-Qiyamah",
+   "ayahs_expected": 40,
+   "ayahs_available": 40,
+   "complete": true,
+   "split_accuracy_avg": 0.867,
+   "min_sim": 0.124
+  },
   "076": {
    "number": 76,
    "name_ar": "الإنسان",
