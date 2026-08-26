@@ -1,0 +1,59 @@
+name: Verify Source Links
+
+on:
+  push:
+    paths: [links.json]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  verify-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check each YouTube link is reachable
+        run: |
+          python - <<'PY'
+          import json, urllib.request, sys
+
+          links = json.load(open("links.json", encoding="utf-8")).get("links", {})
+          bad = []
+          for key in sorted(links, key=int):
+              url = links[key].get("url", "")
+              if not url:
+                  bad.append((key, "no url")); continue
+              # YouTube watch/short URL -> use oembed to check existence
+              test = url.replace("youtu.be/", "youtube.com/watch?v=").replace("m.youtube", "youtube")
+              oembed = "https://www.youtube.com/oembed?url=" + urllib.parse.quote(test) + "&format=json"
+              req = urllib.request.Request(oembed, headers={"User-Agent": "Mozilla/5.0"})
+              try:
+                  urllib.request.urlopen(req, timeout=15)
+              except Exception as e:
+                  bad.append((key, str(e)[:80]))
+          if bad:
+              print("BROKEN LINKS:")
+              for k, m in bad:
+                  print(f"  {k}: {m}")
+              open("broken_links.txt", "w").write("\n".join(f"{k}: {m}" for k, m in bad))
+              sys.exit(1)
+          print(f"OK: all {len(links)} links reachable")
+          PY
+      - name: Open issue if broken
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('broken_links.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: "🔗 Broken source links in links.json",
+              body: "The following YouTube links appear unreachable:\n\n```\n" + body + "\n```\n\nPlease verify/replace them.",
+              labels: ['links-verify', 'auto-fix-needed']
+            });

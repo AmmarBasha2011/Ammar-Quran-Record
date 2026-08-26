@@ -1,0 +1,71 @@
+name: Available JSON Drift
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compare available.json vs disk vs links.json
+        run: |
+          python - <<'PY'
+          import os, json, sys
+
+          REPO = "."
+          av = json.load(open("available.json", encoding="utf-8"))
+          links = json.load(open("links.json", encoding="utf-8")).get("links", {})
+          surahs = av.get("surahs", {})
+
+          drift = []
+
+          # 1) ayah count in json vs actual mp3s
+          for key in sorted(surahs, key=int):
+              dp = os.path.join(REPO, key)
+              exp = surahs[key].get("ayahs", 0)
+              have = len([f for f in os.listdir(dp) if f.endswith(".mp3") and len(f) == 7])
+              if have != exp:
+                  drift.append(f"{key}: available.json says {exp} ayahs but {have} mp3 files on disk")
+
+          # 2) any surah with a link but no published folder
+          for key in sorted(links, key=int):
+              if links[key].get("url") and not os.path.exists(os.path.join(REPO, key, "001.mp3")):
+                  drift.append(f"{key} ({links[key].get('name')}): has source link but NOT published")
+
+          # 3) total fields consistency
+          disk_total = sum(1 for d in os.listdir(REPO)
+                           if d.isdigit() and os.path.isdir(os.path.join(REPO, d))
+                           and os.path.exists(os.path.join(REPO, d, "001.mp3")))
+          if disk_total != av.get("total_surahs"):
+              drift.append(f"total_surahs={av.get('total_surahs')} but {disk_total} folders on disk")
+
+          if drift:
+              print("DRIFT DETECTED:")
+              for d in drift: print("  -", d)
+              open("drift.txt", "w").write("\n".join(drift))
+              sys.exit(1)
+          print(f"OK: available.json matches disk ({disk_total} surahs) and links.json")
+          PY
+      - name: Open issue on drift
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('drift.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: "⚠️ available.json drift detected",
+              body: "Mismatch between available.json, disk files, or links.json:\n\n```\n" + body + "\n```\n\nPlease rebuild available.json.",
+              labels: ['drift', 'auto-fix-needed']
+            });
