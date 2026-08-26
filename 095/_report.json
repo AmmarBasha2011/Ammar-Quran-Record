@@ -1,0 +1,67 @@
+{
+ "surah": "095",
+ "name": "التين",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\095\\095_source.mp3",
+ "ayahs_expected": 8,
+ "ayahs_found": 8,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 12.93,
+   "end": 17.47,
+   "sim": 1.0
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 17.47,
+   "end": 22.19,
+   "sim": 0.85
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 22.19,
+   "end": 26.95,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 26.95,
+   "end": 38.33,
+   "sim": 0.941
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 38.33,
+   "end": 45.42,
+   "sim": 0.801
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 45.42,
+   "end": 57.3,
+   "sim": 0.976
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 57.3,
+   "end": 63.59,
+   "sim": 1.0
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 63.59,
+   "end": 69.22,
+   "sim": 0.956
+  }
+ ]
+}
