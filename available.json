@@ -1,8 +1,8 @@
 {
  "_description": "Available recitation audio files (Ammar Elkhateeb / عمار الخطيب). Audio URL: https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{surah}/{ayah}.mp3",
  "_note_accuracy": "All files cut via forced-alignment (faster-whisper + tarteel). 078/007 and 8 ayahs re-cut 2026-08-26.",
- "total_surahs": 41,
- "total_ayat": 914,
+ "total_surahs": 42,
+ "total_ayat": 932,
  "surahs": {
   "044": {
    "ayahs": 59,
@@ -66,6 +66,29 @@
     57,
     58,
     59
+   ]
+  },
+  "064": {
+   "ayahs": 18,
+   "list": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
    ]
   },
   "068": {
