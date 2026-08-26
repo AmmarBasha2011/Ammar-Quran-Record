@@ -28,12 +28,6 @@
       "verified": true,
       "note": "from playlist"
     },
-    "038": {
-      "name": "ص",
-      "url": "https://www.youtube.com/watch?v=nG1HSF_cjFY",
-      "verified": true,
-      "note": "from playlist"
-    },
     "043": {
       "name": "الزخرف",
       "url": "https://www.youtube.com/watch?v=CD_Cs8FxoWw",
@@ -78,7 +72,7 @@
     },
     "050": {
       "name": "ق",
-      "url": "https://www.youtube.com/watch?v=UGgv5eX8Q8o",
+      "url": "https://www.youtube.com/watch?v=nG1HSF_cjFY",
       "verified": true,
       "note": "from playlist"
     },
@@ -268,9 +262,21 @@
       "verified": true,
       "note": "from playlist"
     },
+    "082": {
+      "name": "الانفطار",
+      "url": "https://www.youtube.com/watch?v=UGgv5eX8Q8o",
+      "verified": true,
+      "note": "from playlist"
+    },
     "083": {
       "name": "المطففين",
       "url": "https://www.youtube.com/watch?v=RXKdX0rOJbc",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "084": {
+      "name": "الانشقاق",
+      "url": "https://www.youtube.com/watch?v=o0otJuNJdD0",
       "verified": true,
       "note": "from playlist"
     },
