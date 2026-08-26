@@ -104,7 +104,7 @@ https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{SURAH:
 python tools/quran_split.py PATH_TO_AUDIO.mp3 044 OUTPUT_DIR --beam 5
 
 # 2) أضفها للـ repo مع الاحتفاظ بـ _report.json
-python add_surah.py 044
+python tools/add_surah.py 044
 ```
 
 
