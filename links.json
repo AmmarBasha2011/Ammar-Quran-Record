@@ -1,0 +1,458 @@
+{
+  "reciter": "Ammar Elkhateeb (عمار الخطيب)",
+  "channel": "INEX Team",
+  "playlist": "https://youtube.com/playlist?list=PLWwJ11mutD5REbiecVA8uI7F2kjpyZ_Gk&si=E9yRV8HqYWXDR2my",
+  "base_audio_url": "https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{surah:03d}/{ayah:03d}.mp3",
+  "links": {
+    "024": {
+      "name": "النور",
+      "url": "https://www.youtube.com/watch?v=lTs7-IkYmFg",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "027": {
+      "name": "النمل",
+      "url": "https://www.youtube.com/watch?v=uqtwoMdc5Yw",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "035": {
+      "name": "فاطر",
+      "url": "https://www.youtube.com/watch?v=QzmTB7uk3ZQ",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "036": {
+      "name": "يس",
+      "url": "https://www.youtube.com/watch?v=ibVHKq1FzMc",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "038": {
+      "name": "ص",
+      "url": "https://www.youtube.com/watch?v=nG1HSF_cjFY",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "043": {
+      "name": "الزخرف",
+      "url": "https://www.youtube.com/watch?v=CD_Cs8FxoWw",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "044": {
+      "name": "الدخان",
+      "url": "https://www.youtube.com/watch?v=SbMz_Xji0j0",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "045": {
+      "name": "الجاثية",
+      "url": "https://www.youtube.com/watch?v=5DFYJDfCF50",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "046": {
+      "name": "الأحقاف",
+      "url": "https://www.youtube.com/watch?v=CvbCoysitU0",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "047": {
+      "name": "محمد",
+      "url": "https://www.youtube.com/watch?v=bFfRdDhD2RA",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "048": {
+      "name": "الفتح",
+      "url": "https://www.youtube.com/watch?v=nigB53ltegg",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "049": {
+      "name": "الحجرات",
+      "url": "https://www.youtube.com/watch?v=IN_S12HB9nk",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "050": {
+      "name": "ق",
+      "url": "https://www.youtube.com/watch?v=UGgv5eX8Q8o",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "051": {
+      "name": "الذاريات",
+      "url": "https://www.youtube.com/watch?v=NHoZ84s02VI",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "052": {
+      "name": "الطور",
+      "url": "https://www.youtube.com/watch?v=z0wXuI75LUQ",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "053": {
+      "name": "النجم",
+      "url": "https://www.youtube.com/watch?v=_1t5zdJNmT0",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "054": {
+      "name": "القمر",
+      "url": "https://www.youtube.com/watch?v=E8vrT1DW2_U",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "055": {
+      "name": "الرحمن",
+      "url": "https://www.youtube.com/watch?v=7pG6rRHEIcQ",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "056": {
+      "name": "الواقعة",
+      "url": "https://www.youtube.com/watch?v=Mf8CYm255OA",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "057": {
+      "name": "الحديد",
+      "url": "https://www.youtube.com/watch?v=2-wcehRpLn4",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "058": {
+      "name": "المجادلة",
+      "url": "https://www.youtube.com/watch?v=RLGSBjkynLY",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "059": {
+      "name": "الحشر",
+      "url": "https://www.youtube.com/watch?v=iSippPhX4W8",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "060": {
+      "name": "الممتحنة",
+      "url": "https://www.youtube.com/watch?v=UPaZRZapWvo",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "061": {
+      "name": "الصف",
+      "url": "https://www.youtube.com/watch?v=rqhbpksBqbU",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "062": {
+      "name": "الجمعة",
+      "url": "https://www.youtube.com/watch?v=lx-fskYL7-k",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "063": {
+      "name": "المنافقون",
+      "url": "https://www.youtube.com/watch?v=kkeS6J9dQQQ",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "064": {
+      "name": "التغابن",
+      "url": "https://www.youtube.com/watch?v=5e1Ia8V6h9c",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "065": {
+      "name": "الطلاق",
+      "url": "https://www.youtube.com/watch?v=w-C5FTyVx-8",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "066": {
+      "name": "التحريم",
+      "url": "https://www.youtube.com/watch?v=BLI4dSrW_8w",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "067": {
+      "name": "الملك",
+      "url": "https://www.youtube.com/watch?v=PmKTZCYGF70",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "068": {
+      "name": "القلم",
+      "url": "https://www.youtube.com/watch?v=godixg_boaw",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "069": {
+      "name": "الحاقة",
+      "url": "https://www.youtube.com/watch?v=RNuOS1JYFwE",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "070": {
+      "name": "المعارج",
+      "url": "https://www.youtube.com/watch?v=zEeEOHadCAQ",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "071": {
+      "name": "نوح",
+      "url": "https://www.youtube.com/watch?v=HXxtU5MDrmU",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "072": {
+      "name": "الجن",
+      "url": "https://www.youtube.com/watch?v=1AmZkfWixZU",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "073": {
+      "name": "المزمل",
+      "url": "https://www.youtube.com/watch?v=B7l8S3Pswts",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "074": {
+      "name": "المدثر",
+      "url": "https://www.youtube.com/watch?v=H2iQq6mkOnc",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "075": {
+      "name": "القيامة",
+      "url": "https://www.youtube.com/watch?v=11lZyOWwSK8",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "076": {
+      "name": "الإنسان",
+      "url": "https://www.youtube.com/watch?v=2c3YFKtzU0s",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "077": {
+      "name": "المرسلات",
+      "url": "https://www.youtube.com/watch?v=shXOxO5O3wQ",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "078": {
+      "name": "النبأ",
+      "url": "https://www.youtube.com/watch?v=rKKjhIHyyb0",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "079": {
+      "name": "النازعات",
+      "url": "https://www.youtube.com/watch?v=ftD7SUrp3js",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "080": {
+      "name": "عبس",
+      "url": "https://www.youtube.com/watch?v=J_2GZ3zUvTU",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "081": {
+      "name": "التكوير",
+      "url": "https://www.youtube.com/watch?v=uUctjk95cUs",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "083": {
+      "name": "المطففين",
+      "url": "https://www.youtube.com/watch?v=RXKdX0rOJbc",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "085": {
+      "name": "البروج",
+      "url": "https://www.youtube.com/watch?v=OTHkgDZo7C8",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "086": {
+      "name": "الطارق",
+      "url": "https://www.youtube.com/watch?v=nOk2i3Drc7A",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "087": {
+      "name": "الأعلى",
+      "url": "https://www.youtube.com/watch?v=RJkORD_aT-w",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "088": {
+      "name": "الغاشية",
+      "url": "https://www.youtube.com/watch?v=ec9QW6BR0-E",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "089": {
+      "name": "الفجر",
+      "url": "https://www.youtube.com/watch?v=7zS-bBdvDDE",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "090": {
+      "name": "البلد",
+      "url": "https://www.youtube.com/watch?v=yS8p7_r3B30",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "091": {
+      "name": "الشمس",
+      "url": "https://www.youtube.com/watch?v=fmFmcHR44Qo",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "092": {
+      "name": "الليل",
+      "url": "https://www.youtube.com/watch?v=_-RDHScOUUE",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "093": {
+      "name": "الضحى",
+      "url": "https://www.youtube.com/watch?v=HTQdioMbQas",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "094": {
+      "name": "الشرح",
+      "url": "https://www.youtube.com/watch?v=RhAFdZcLoac",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "095": {
+      "name": "التين",
+      "url": "https://www.youtube.com/watch?v=Cc7cYjG3NGg",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "096": {
+      "name": "العلق",
+      "url": "https://www.youtube.com/watch?v=nPQFdLOAx98",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "097": {
+      "name": "القدر",
+      "url": "https://www.youtube.com/watch?v=RyhCVHwyWbA",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "098": {
+      "name": "البينة",
+      "url": "https://www.youtube.com/watch?v=d_9IY1kxgRo",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "099": {
+      "name": "الزلزلة",
+      "url": "https://www.youtube.com/watch?v=GxL0JXpZsYw",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "100": {
+      "name": "العاديات",
+      "url": "https://www.youtube.com/watch?v=t0y8LFTa-mw",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "101": {
+      "name": "القارعة",
+      "url": "https://www.youtube.com/watch?v=AS5dgyo_gxA",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "102": {
+      "name": "التكاثر",
+      "url": "https://www.youtube.com/watch?v=GetmbwZRjZY",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "103": {
+      "name": "العصر",
+      "url": "https://www.youtube.com/watch?v=sk_maYNd86Q",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "104": {
+      "name": "الهمزة",
+      "url": "https://www.youtube.com/watch?v=nDENyvNuYCk",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "105": {
+      "name": "الفيل",
+      "url": "https://www.youtube.com/watch?v=ZUa3wM2hR00",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "106": {
+      "name": "قريش",
+      "url": "https://www.youtube.com/watch?v=EPXYZ45-l_U",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "107": {
+      "name": "الماعون",
+      "url": "https://www.youtube.com/watch?v=H7_2T0pRuR8",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "108": {
+      "name": "الكوثر",
+      "url": "https://www.youtube.com/watch?v=gmDcJb2Hahk",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "109": {
+      "name": "الكافرون",
+      "url": "https://www.youtube.com/watch?v=rAb0knpfoI4",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "110": {
+      "name": "النصر",
+      "url": "https://www.youtube.com/watch?v=u9jXhk0VUnU",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "111": {
+      "name": "المسد",
+      "url": "https://www.youtube.com/watch?v=7agsD1qAtdM",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "112": {
+      "name": "الإخلاص",
+      "url": "https://www.youtube.com/watch?v=3qG8sCdedEE",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "113": {
+      "name": "الفلق",
+      "url": "https://www.youtube.com/watch?v=4H3kG8sQh4Y",
+      "verified": true,
+      "note": "from playlist"
+    },
+    "114": {
+      "name": "الناس",
+      "url": "https://www.youtube.com/watch?v=cfJTrcdw72U",
+      "verified": true,
+      "note": "from playlist"
+    }
+  }
+}
