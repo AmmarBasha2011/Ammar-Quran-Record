@@ -1,0 +1,377 @@
+{
+ "_description": "قائمة السور المتوفرة في هذا الأرشيف — Available surahs with accuracy metrics",
+ "_note_accuracy": "accuracy = متوسط نسبة مطابقة النص المسموع مع نص المصحف عند التقسيم والتحقق",
+ "total_surahs": 30,
+ "total_ayat": 454,
+ "surahs": {
+  "078": {
+   "number": 78,
+   "name_ar": "النبأ",
+   "name_en": "An-Naba",
+   "ayahs_expected": 40,
+   "ayahs_available": 40,
+   "complete": true,
+   "split_accuracy_avg": 0.926,
+   "min_sim": 0.636,
+   "manually_verified": [
+    1,
+    8,
+    34,
+    38
+   ]
+  },
+  "079": {
+   "number": 79,
+   "name_ar": "النازعات",
+   "name_en": "An-Naziat",
+   "ayahs_expected": 46,
+   "ayahs_available": 46,
+   "complete": true,
+   "split_accuracy_avg": 0.853,
+   "min_sim": 0.468,
+   "manually_verified": [
+    1,
+    13,
+    23,
+    25,
+    34,
+    45
+   ]
+  },
+  "080": {
+   "number": 80,
+   "name_ar": "عبس",
+   "name_en": "Abasa",
+   "ayahs_expected": 42,
+   "ayahs_available": 42,
+   "complete": true,
+   "split_accuracy_avg": 0.837,
+   "min_sim": 0.0,
+   "manually_verified": [
+    9,
+    32,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42
+   ]
+  },
+  "081": {
+   "number": 81,
+   "name_ar": "التكوير",
+   "name_en": "At-Takwir",
+   "ayahs_expected": 29,
+   "ayahs_available": 29,
+   "complete": true,
+   "split_accuracy_avg": 0.939,
+   "min_sim": 0.787,
+   "manually_verified": [
+    24,
+    28,
+    29
+   ]
+  },
+  "082": {
+   "number": 82,
+   "name_ar": "الإنفطار",
+   "name_en": "Al-Infitar",
+   "ayahs_expected": 19,
+   "ayahs_available": 19,
+   "complete": true,
+   "split_accuracy_avg": 0.932,
+   "min_sim": 0.713,
+   "manually_verified": []
+  },
+  "083": {
+   "number": 83,
+   "name_ar": "المطففين",
+   "name_en": "Al-Mutaffifin",
+   "ayahs_expected": 36,
+   "ayahs_available": 36,
+   "complete": true,
+   "split_accuracy_avg": 0.898,
+   "min_sim": 0.524,
+   "manually_verified": []
+  },
+  "084": {
+   "number": 84,
+   "name_ar": "الإنشقاق",
+   "name_en": "Al-Inshiqaq",
+   "ayahs_expected": 25,
+   "ayahs_available": 25,
+   "complete": true,
+   "split_accuracy_avg": 0.947,
+   "min_sim": 0.825,
+   "manually_verified": []
+  },
+  "085": {
+   "number": 85,
+   "name_ar": "البروج",
+   "name_en": "Al-Buruj",
+   "ayahs_expected": 22,
+   "ayahs_available": 22,
+   "complete": true,
+   "split_accuracy_avg": 0.933,
+   "min_sim": 0.767,
+   "manually_verified": []
+  },
+  "088": {
+   "number": 88,
+   "name_ar": "الغاشية",
+   "name_en": "Al-Ghashiyah",
+   "ayahs_expected": 26,
+   "ayahs_available": 26,
+   "complete": true,
+   "split_accuracy_avg": 0.914,
+   "min_sim": 0.718,
+   "manually_verified": []
+  },
+  "089": {
+   "number": 89,
+   "name_ar": "الفجر",
+   "name_en": "Al-Fajr",
+   "ayahs_expected": 30,
+   "ayahs_available": 30,
+   "complete": true,
+   "split_accuracy_avg": 0.926,
+   "min_sim": 0.769,
+   "manually_verified": [
+    16,
+    23,
+    24
+   ]
+  },
+  "090": {
+   "number": 90,
+   "name_ar": "البلد",
+   "name_en": "Al-Balad",
+   "ayahs_expected": 20,
+   "ayahs_available": 20,
+   "complete": true,
+   "split_accuracy_avg": 0.928,
+   "min_sim": 0.578,
+   "manually_verified": []
+  },
+  "094": {
+   "number": 94,
+   "name_ar": "الشرح",
+   "name_en": "Ash-Sharh",
+   "ayahs_expected": 8,
+   "ayahs_available": 8,
+   "complete": true,
+   "split_accuracy_avg": 0.955,
+   "min_sim": 0.833,
+   "manually_verified": []
+  },
+  "097": {
+   "number": 97,
+   "name_ar": "القدر",
+   "name_en": "Al-Qadr",
+   "ayahs_expected": 5,
+   "ayahs_available": 5,
+   "complete": true,
+   "split_accuracy_avg": 0.877,
+   "min_sim": 0.781,
+   "manually_verified": [
+    1,
+    2,
+    3
+   ]
+  },
+  "098": {
+   "number": 98,
+   "name_ar": "البينة",
+   "name_en": "Al-Bayinah",
+   "ayahs_expected": 8,
+   "ayahs_available": 8,
+   "complete": true,
+   "split_accuracy_avg": 0.896,
+   "min_sim": 0.731,
+   "manually_verified": [
+    4,
+    5
+   ]
+  },
+  "099": {
+   "number": 99,
+   "name_ar": "الزلزلة",
+   "name_en": "Az-Zalzalah",
+   "ayahs_expected": 8,
+   "ayahs_available": 8,
+   "complete": true,
+   "split_accuracy_avg": 0.936,
+   "min_sim": 0.882,
+   "manually_verified": []
+  },
+  "100": {
+   "number": 100,
+   "name_ar": "العاديات",
+   "name_en": "Al-Adiyat",
+   "ayahs_expected": 11,
+   "ayahs_available": 11,
+   "complete": true,
+   "split_accuracy_avg": 0.876,
+   "min_sim": 0.533,
+   "manually_verified": []
+  },
+  "101": {
+   "number": 101,
+   "name_ar": "القارعة",
+   "name_en": "Al-Qariah",
+   "ayahs_expected": 11,
+   "ayahs_available": 11,
+   "complete": true,
+   "split_accuracy_avg": 0.954,
+   "min_sim": 0.856,
+   "manually_verified": []
+  },
+  "102": {
+   "number": 102,
+   "name_ar": "التكاثر",
+   "name_en": "Al-Takathur",
+   "ayahs_expected": 8,
+   "ayahs_available": 8,
+   "complete": true,
+   "split_accuracy_avg": 0.973,
+   "min_sim": 0.859,
+   "manually_verified": [
+    1
+   ]
+  },
+  "103": {
+   "number": 103,
+   "name_ar": "العصر",
+   "name_en": "Al-Asr",
+   "ayahs_expected": 3,
+   "ayahs_available": 3,
+   "complete": true,
+   "split_accuracy_avg": 0.943,
+   "min_sim": 0.882,
+   "manually_verified": []
+  },
+  "104": {
+   "number": 104,
+   "name_ar": "الهمزة",
+   "name_en": "Al-Humazah",
+   "ayahs_expected": 9,
+   "ayahs_available": 9,
+   "complete": true,
+   "split_accuracy_avg": 0.976,
+   "min_sim": 0.933,
+   "manually_verified": []
+  },
+  "105": {
+   "number": 105,
+   "name_ar": "الفيل",
+   "name_en": "Al-Fil",
+   "ayahs_expected": 5,
+   "ayahs_available": 5,
+   "complete": true,
+   "split_accuracy_avg": 0.961,
+   "min_sim": 0.939,
+   "manually_verified": []
+  },
+  "106": {
+   "number": 106,
+   "name_ar": "قريش",
+   "name_en": "Quraish",
+   "ayahs_expected": 4,
+   "ayahs_available": 4,
+   "complete": true,
+   "split_accuracy_avg": 0.927,
+   "min_sim": 0.85,
+   "manually_verified": []
+  },
+  "107": {
+   "number": 107,
+   "name_ar": "الماعون",
+   "name_en": "Al-Ma'un",
+   "ayahs_expected": 7,
+   "ayahs_available": 7,
+   "complete": true,
+   "split_accuracy_avg": 0.984,
+   "min_sim": 0.949,
+   "manually_verified": []
+  },
+  "108": {
+   "number": 108,
+   "name_ar": "الكوثر",
+   "name_en": "Al-Kauthar",
+   "ayahs_expected": 3,
+   "ayahs_available": 3,
+   "complete": true,
+   "split_accuracy_avg": 0.957,
+   "min_sim": 0.935,
+   "manually_verified": []
+  },
+  "109": {
+   "number": 109,
+   "name_ar": "الكافرون",
+   "name_en": "Al-Kafirun",
+   "ayahs_expected": 6,
+   "ayahs_available": 6,
+   "complete": true,
+   "split_accuracy_avg": 0.942,
+   "min_sim": 0.802,
+   "manually_verified": []
+  },
+  "110": {
+   "number": 110,
+   "name_ar": "النصر",
+   "name_en": "An-Nasr",
+   "ayahs_expected": 3,
+   "ayahs_available": 3,
+   "complete": true,
+   "split_accuracy_avg": 0.853,
+   "min_sim": 0.789,
+   "manually_verified": []
+  },
+  "111": {
+   "number": 111,
+   "name_ar": "المسد",
+   "name_en": "Al-Masad",
+   "ayahs_expected": 5,
+   "ayahs_available": 5,
+   "complete": true,
+   "split_accuracy_avg": 0.874,
+   "min_sim": 0.748,
+   "manually_verified": []
+  },
+  "112": {
+   "number": 112,
+   "name_ar": "الإخلاص",
+   "name_en": "Al-Ikhlas",
+   "ayahs_expected": 4,
+   "ayahs_available": 4,
+   "complete": true,
+   "split_accuracy_avg": 0.908,
+   "min_sim": 0.819,
+   "manually_verified": []
+  },
+  "113": {
+   "number": 113,
+   "name_ar": "الفلق",
+   "name_en": "Al-Falaq",
+   "ayahs_expected": 5,
+   "ayahs_available": 5,
+   "complete": true,
+   "split_accuracy_avg": 0.886,
+   "min_sim": 0.806,
+   "manually_verified": []
+  },
+  "114": {
+   "number": 114,
+   "name_ar": "الناس",
+   "name_en": "An-Nas",
+   "ayahs_expected": 6,
+   "ayahs_available": 6,
+   "complete": true,
+   "split_accuracy_avg": 0.869,
+   "min_sim": 0.658,
+   "manually_verified": []
+  }
+ }
+}
