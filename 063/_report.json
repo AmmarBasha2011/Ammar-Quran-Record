@@ -1,0 +1,91 @@
+{
+ "surah": "063",
+ "name": "المنافقون",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\063\\063_source.mp3",
+ "ayahs_expected": 11,
+ "ayahs_found": 11,
+ "complete": true,
+ "weak": [
+  1,
+  8
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 0.0,
+   "end": 39.88,
+   "sim": 0.22
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 39.88,
+   "end": 62.07,
+   "sim": 0.952
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 62.07,
+   "end": 77.05,
+   "sim": 0.989
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 77.05,
+   "end": 113.51,
+   "sim": 0.928
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 113.51,
+   "end": 136.67,
+   "sim": 0.98
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 136.67,
+   "end": 158.26,
+   "sim": 0.957
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 158.26,
+   "end": 183.15,
+   "sim": 0.932
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 183.15,
+   "end": 219.81,
+   "sim": 0.748
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 219.81,
+   "end": 246.9,
+   "sim": 0.937
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 246.9,
+   "end": 278.97,
+   "sim": 0.863
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 278.97,
+   "end": 296.02,
+   "sim": 0.978
+  }
+ ]
+}
