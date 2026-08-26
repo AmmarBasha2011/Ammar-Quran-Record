@@ -1,0 +1,139 @@
+{
+ "surah": "064",
+ "name": "التغابن",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\064\\064_source.mp3",
+ "ayahs_expected": 18,
+ "ayahs_found": 18,
+ "complete": true,
+ "weak": [
+  1
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 2.42,
+   "end": 28.01,
+   "sim": 0.249
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 28.01,
+   "end": 43.18,
+   "sim": 0.973
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 43.18,
+   "end": 57.83,
+   "sim": 0.965
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 57.83,
+   "end": 76.08,
+   "sim": 0.981
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 76.08,
+   "end": 95.19,
+   "sim": 0.936
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 95.19,
+   "end": 127.26,
+   "sim": 0.962
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 127.26,
+   "end": 151.56,
+   "sim": 0.955
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 151.56,
+   "end": 167.59,
+   "sim": 0.943
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 167.59,
+   "end": 214.65,
+   "sim": 0.948
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 214.65,
+   "end": 234.88,
+   "sim": 0.976
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 234.88,
+   "end": 258.66,
+   "sim": 0.975
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 258.66,
+   "end": 279.14,
+   "sim": 0.974
+  },
+  {
+   "ayah": 13,
+   "file": "013.mp3",
+   "start": 279.14,
+   "end": 295.21,
+   "sim": 0.901
+  },
+  {
+   "ayah": 14,
+   "file": "014.mp3",
+   "start": 295.21,
+   "end": 323.65,
+   "sim": 0.913
+  },
+  {
+   "ayah": 15,
+   "file": "015.mp3",
+   "start": 323.65,
+   "end": 337.85,
+   "sim": 0.96
+  },
+  {
+   "ayah": 16,
+   "file": "016.mp3",
+   "start": 337.85,
+   "end": 359.53,
+   "sim": 0.963
+  },
+  {
+   "ayah": 17,
+   "file": "017.mp3",
+   "start": 359.53,
+   "end": 375.96,
+   "sim": 0.914
+  },
+  {
+   "ayah": 18,
+   "file": "018.mp3",
+   "start": 375.97,
+   "end": 383.92,
+   "sim": 0.945
+  }
+ ]
+}

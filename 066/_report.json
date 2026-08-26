@@ -1,0 +1,100 @@
+{
+ "surah": "066",
+ "name": "التحريم",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\066\\066_source.mp3",
+ "ayahs_expected": 12,
+ "ayahs_found": 12,
+ "complete": true,
+ "weak": [
+  1,
+  3,
+  6,
+  10
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 19.24,
+   "end": 40.39,
+   "sim": 0.194
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 40.39,
+   "end": 56.34,
+   "sim": 0.948
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 56.34,
+   "end": 97.43,
+   "sim": 0.653
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 97.43,
+   "end": 135.98,
+   "sim": 0.854
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 135.98,
+   "end": 182.19,
+   "sim": 0.843
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 182.19,
+   "end": 224.05,
+   "sim": 0.67
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 224.05,
+   "end": 243.49,
+   "sim": 0.806
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 243.49,
+   "end": 310.11,
+   "sim": 0.947
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 310.11,
+   "end": 331.18,
+   "sim": 0.865
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 331.18,
+   "end": 378.77,
+   "sim": 0.68
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 378.77,
+   "end": 401.03,
+   "sim": 0.861
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 401.03,
+   "end": 427.02,
+   "sim": 0.942
+  }
+ ]
+}

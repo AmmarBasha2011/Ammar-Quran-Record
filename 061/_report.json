@@ -1,0 +1,112 @@
+{
+ "surah": "061",
+ "name": "الصف",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\061\\061_source.mp3",
+ "ayahs_expected": 14,
+ "ayahs_found": 14,
+ "complete": true,
+ "weak": [
+  1,
+  14
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 0.0,
+   "end": 36.03,
+   "sim": 0.203
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 36.03,
+   "end": 49.3,
+   "sim": 0.988
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 49.3,
+   "end": 62.42,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 62.42,
+   "end": 84.68,
+   "sim": 0.959
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 84.68,
+   "end": 126.08,
+   "sim": 0.941
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 126.09,
+   "end": 180.53,
+   "sim": 0.955
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 180.53,
+   "end": 206.17,
+   "sim": 0.922
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 206.17,
+   "end": 226.08,
+   "sim": 0.825
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 226.08,
+   "end": 253.93,
+   "sim": 0.927
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 253.93,
+   "end": 271.69,
+   "sim": 0.965
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 271.69,
+   "end": 307.87,
+   "sim": 0.843
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 307.87,
+   "end": 347.05,
+   "sim": 0.97
+  },
+  {
+   "ayah": 13,
+   "file": "013.mp3",
+   "start": 347.05,
+   "end": 366.19,
+   "sim": 0.907
+  },
+  {
+   "ayah": 14,
+   "file": "014.mp3",
+   "start": 366.19,
+   "end": 444.4,
+   "sim": 0.455
+  }
+ ]
+}
