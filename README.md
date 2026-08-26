@@ -93,14 +93,20 @@ https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{SURAH:
 كل سورة قُطّعت آية آية باستخدام أداة `quran_split.py` (موجودة في مجلد `tools/` في هذا المستودع) المبنية على:
 - **faster-whisper** (CPU, beam=5) مع موديل متدرّب على القرآن (tarteel)
 - **Forced Alignment** (word-level timestamps) لتحديد حدود كل آية بدقة
+- **فصل الاستعاذة والبسملة** عن الآية الأولى تلقائياً (الأداة بتشيلهم قبل الـ alignment)
 - **مقارنة بالنص الرسمي** للتحقق من كل آية (similarity score)
 
 <details>
 <summary>عرض مثال لسطر أوامر التقطيع</summary>
 
 ```bash
+# 1) قطّع السورة (تكتب _report.json في outdir)
 python tools/quran_split.py PATH_TO_AUDIO.mp3 044 OUTPUT_DIR --beam 5
+
+# 2) أضفها للـ repo مع الاحتفاظ بـ _report.json
+python add_surah.py 044
 ```
+
 
 حيث `044` هو رقم السورة و `OUTPUT_DIR` مجلد لحفظ الملفات الناتجة.
 للتفاصيل الكاملة راجع **[`tools/README.md`](tools/README.md)**.
