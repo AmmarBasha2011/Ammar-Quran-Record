@@ -1,0 +1,90 @@
+{
+ "surah": "100",
+ "name": "العاديات",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\100\\100_source.mp3",
+ "ayahs_expected": 11,
+ "ayahs_found": 11,
+ "complete": true,
+ "weak": [
+  9
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 8.89,
+   "end": 12.63,
+   "sim": 0.958
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 12.63,
+   "end": 16.51,
+   "sim": 0.897
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 16.51,
+   "end": 20.11,
+   "sim": 0.98
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 20.11,
+   "end": 23.45,
+   "sim": 0.993
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 23.45,
+   "end": 26.83,
+   "sim": 0.993
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 26.83,
+   "end": 35.28,
+   "sim": 0.814
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 35.28,
+   "end": 42.86,
+   "sim": 1.0
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 42.86,
+   "end": 50.53,
+   "sim": 1.0
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 50.53,
+   "end": 58.43,
+   "sim": 0.533
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 58.43,
+   "end": 63.29,
+   "sim": 1.0
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 63.29,
+   "end": 71.9,
+   "sim": 0.813
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "surah": "108",
+ "name": "الكوثر",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\108\\108_source.mp3",
+ "ayahs_expected": 3,
+ "ayahs_found": 3,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 10.5,
+   "end": 17.75,
+   "sim": 0.901
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 17.76,
+   "end": 20.95,
+   "sim": 0.956
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 20.95,
+   "end": 25.79,
+   "sim": 0.975
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "surah": "094",
+ "name": "الشرح",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\094\\094_source.mp3",
+ "ayahs_expected": 8,
+ "ayahs_found": 8,
+ "complete": true,
+ "weak": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 31.28,
+   "end": 33.03,
+   "sim": 0.417
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 33.03,
+   "end": 40.54,
+   "sim": 0.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 40.54,
+   "end": 41.47,
+   "sim": 0.444
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 41.47,
+   "end": 42.37,
+   "sim": 0.0
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 42.37,
+   "end": 44.86,
+   "sim": 0.697
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 44.86,
+   "end": 45.83,
+   "sim": 0.0
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 45.83,
+   "end": 46.83,
+   "sim": 0.0
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 46.83,
+   "end": 48.26,
+   "sim": 0.778
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "surah": "104",
+ "name": "الهمزة",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\104\\104_source.mp3",
+ "ayahs_expected": 9,
+ "ayahs_found": 9,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 11.64,
+   "end": 15.58,
+   "sim": 0.955
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 15.58,
+   "end": 20.15,
+   "sim": 0.958
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 20.15,
+   "end": 26.29,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 26.3,
+   "end": 31.41,
+   "sim": 0.862
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 31.41,
+   "end": 36.41,
+   "sim": 0.933
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 36.41,
+   "end": 39.85,
+   "sim": 0.983
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 39.85,
+   "end": 43.93,
+   "sim": 0.987
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 43.93,
+   "end": 48.89,
+   "sim": 0.956
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 48.89,
+   "end": 52.52,
+   "sim": 0.956
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "surah": "113",
+ "name": "الفلق",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\113\\113_source.mp3",
+ "ayahs_expected": 5,
+ "ayahs_found": 5,
+ "complete": true,
+ "weak": [
+  1,
+  2,
+  3
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 0.0,
+   "end": 4.73,
+   "sim": 0.617
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 4.73,
+   "end": 30.71,
+   "sim": 0.268
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 30.71,
+   "end": 46.05,
+   "sim": 0.636
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 46.05,
+   "end": 56.59,
+   "sim": 0.953
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 56.59,
+   "end": 66.64,
+   "sim": 0.834
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "surah": "110",
+ "name": "النصر",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\110\\110_source.mp3",
+ "ayahs_expected": 3,
+ "ayahs_found": 3,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 27.86,
+   "end": 37.23,
+   "sim": 0.789
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 37.23,
+   "end": 50.53,
+   "sim": 0.79
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 50.53,
+   "end": 66.14,
+   "sim": 0.959
+  }
+ ]
+}

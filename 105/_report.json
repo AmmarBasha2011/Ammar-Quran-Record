@@ -1,0 +1,46 @@
+{
+ "surah": "105",
+ "name": "الفيل",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\105\\105_source.mp3",
+ "ayahs_expected": 5,
+ "ayahs_found": 5,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 10.38,
+   "end": 17.89,
+   "sim": 0.985
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 17.89,
+   "end": 23.71,
+   "sim": 0.956
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 23.71,
+   "end": 29.58,
+   "sim": 0.972
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 29.58,
+   "end": 37.31,
+   "sim": 0.972
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 37.31,
+   "end": 41.24,
+   "sim": 0.918
+  }
+ ]
+}

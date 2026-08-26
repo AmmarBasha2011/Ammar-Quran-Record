@@ -337,11 +337,15 @@
     44,
     45
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.417,
+   "avg_sim": 0.916,
+   "weak_ayahs": [
+    13,
+    25,
+    30,
+    31
+   ],
+   "manual_revise": true
   },
   "052": {
    "ayahs": 49,
@@ -726,11 +730,19 @@
     51,
     52
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.477,
+   "avg_sim": 0.892,
+   "weak_ayahs": [
+    1,
+    4,
+    6,
+    11,
+    17,
+    30,
+    46,
+    48
+   ],
+   "manual_revise": true
   },
   "069": {
    "ayahs": 52,
@@ -788,11 +800,15 @@
     51,
     52
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.447,
+   "avg_sim": 0.903,
+   "weak_ayahs": [
+    1,
+    2,
+    3,
+    20
+   ],
+   "manual_revise": true
   },
   "070": {
    "ayahs": 44,
@@ -886,11 +902,13 @@
     27,
     28
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.637,
+   "avg_sim": 0.941,
+   "weak_ayahs": [
+    3,
+    23
+   ],
+   "manual_revise": true
   },
   "072": {
    "ayahs": 28,
@@ -924,11 +942,13 @@
     27,
     28
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.317,
+   "avg_sim": 0.879,
+   "weak_ayahs": [
+    1,
+    7
+   ],
+   "manual_revise": true
   },
   "073": {
    "ayahs": 20,
@@ -954,11 +974,14 @@
     19,
     20
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.704,
+   "avg_sim": 0.854,
+   "weak_ayahs": [
+    7,
+    16,
+    17
+   ],
+   "manual_revise": true
   },
   "074": {
    "ayahs": 56,
@@ -1020,11 +1043,16 @@
     55,
     56
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.204,
+   "avg_sim": 0.905,
+   "weak_ayahs": [
+    1,
+    2,
+    30,
+    33,
+    50
+   ],
+   "manual_revise": true
   },
   "075": {
    "ayahs": 40,
@@ -1070,11 +1098,15 @@
     39,
     40
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.124,
+   "avg_sim": 0.88,
+   "weak_ayahs": [
+    1,
+    2,
+    36,
+    38
+   ],
+   "manual_revise": true
   },
   "076": {
    "ayahs": 31,
@@ -1111,11 +1143,13 @@
     30,
     31
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.575,
+   "avg_sim": 0.899,
+   "weak_ayahs": [
+    19,
+    24
+   ],
+   "manual_revise": true
   },
   "077": {
    "ayahs": 50,
@@ -1171,11 +1205,12 @@
     49,
     50
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.585,
+   "avg_sim": 0.899,
+   "weak_ayahs": [
+    1
+   ],
+   "manual_revise": true
   },
   "078": {
    "ayahs": 40,
@@ -1221,11 +1256,16 @@
     39,
     40
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.524,
+   "avg_sim": 0.907,
+   "weak_ayahs": [
+    1,
+    8,
+    21,
+    34,
+    37
+   ],
+   "manual_revise": true
   },
   "079": {
    "ayahs": 46,
@@ -1277,11 +1317,19 @@
     45,
     46
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.2,
+   "avg_sim": 0.861,
+   "weak_ayahs": [
+    1,
+    2,
+    5,
+    17,
+    24,
+    28,
+    29,
+    45
+   ],
+   "manual_revise": true
   },
   "080": {
    "ayahs": 42,
@@ -1329,11 +1377,15 @@
     41,
     42
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.333,
+   "avg_sim": 0.906,
+   "weak_ayahs": [
+    1,
+    16,
+    32,
+    34
+   ],
+   "manual_revise": true
   },
   "081": {
    "ayahs": 29,
@@ -1368,11 +1420,12 @@
     28,
     29
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.711,
+   "avg_sim": 0.937,
+   "weak_ayahs": [
+    9
+   ],
+   "manual_revise": true
   },
   "082": {
    "ayahs": 19,
@@ -1397,11 +1450,10 @@
     18,
     19
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.831,
+   "avg_sim": 0.955,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "083": {
    "ayahs": 36,
@@ -1443,11 +1495,15 @@
     35,
     36
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.5,
+   "avg_sim": 0.907,
+   "weak_ayahs": [
+    15,
+    22,
+    28,
+    36
+   ],
+   "manual_revise": true
   },
   "084": {
    "ayahs": 25,
@@ -1478,11 +1534,12 @@
     24,
     25
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.689,
+   "avg_sim": 0.922,
+   "weak_ayahs": [
+    14
+   ],
+   "manual_revise": true
   },
   "085": {
    "ayahs": 22,
@@ -1510,11 +1567,13 @@
     21,
     22
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.536,
+   "avg_sim": 0.913,
+   "weak_ayahs": [
+    4,
+    20
+   ],
+   "manual_revise": true
   },
   "086": {
    "ayahs": 17,
@@ -1537,11 +1596,15 @@
     16,
     17
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.214,
+   "avg_sim": 0.817,
+   "weak_ayahs": [
+    1,
+    2,
+    6,
+    13
+   ],
+   "manual_revise": true
   },
   "088": {
    "ayahs": 26,
@@ -1573,11 +1636,13 @@
     25,
     26
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.114,
+   "avg_sim": 0.898,
+   "weak_ayahs": [
+    1,
+    2
+   ],
+   "manual_revise": true
   },
   "089": {
    "ayahs": 30,
@@ -1613,11 +1678,10 @@
     29,
     30
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.769,
+   "avg_sim": 0.939,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "090": {
    "ayahs": 20,
@@ -1643,11 +1707,12 @@
     19,
     20
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.578,
+   "avg_sim": 0.911,
+   "weak_ayahs": [
+    11
+   ],
+   "manual_revise": true
   },
   "092": {
    "ayahs": 21,
@@ -1674,11 +1739,13 @@
     20,
     21
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.673,
+   "avg_sim": 0.923,
+   "weak_ayahs": [
+    1,
+    14
+   ],
+   "manual_revise": true
   },
   "094": {
    "ayahs": 8,
@@ -1692,11 +1759,18 @@
     7,
     8
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.0,
+   "avg_sim": 0.292,
+   "weak_ayahs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "manual_revise": true
   },
   "097": {
    "ayahs": 5,
@@ -1707,11 +1781,12 @@
     4,
     5
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.699,
+   "avg_sim": 0.877,
+   "weak_ayahs": [
+    2
+   ],
+   "manual_revise": true
   },
   "098": {
    "ayahs": 8,
@@ -1725,11 +1800,12 @@
     7,
     8
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.747,
+   "avg_sim": 0.898,
+   "weak_ayahs": [
+    4
+   ],
+   "manual_revise": true
   },
   "099": {
    "ayahs": 8,
@@ -1743,11 +1819,10 @@
     7,
     8
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.891,
+   "avg_sim": 0.962,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "100": {
    "ayahs": 11,
@@ -1764,11 +1839,12 @@
     10,
     11
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.533,
+   "avg_sim": 0.907,
+   "weak_ayahs": [
+    9
+   ],
+   "manual_revise": true
   },
   "101": {
    "ayahs": 11,
@@ -1785,11 +1861,10 @@
     10,
     11
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.856,
+   "avg_sim": 0.946,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "102": {
    "ayahs": 8,
@@ -1803,11 +1878,10 @@
     7,
     8
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.87,
+   "avg_sim": 0.977,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "103": {
    "ayahs": 3,
@@ -1816,11 +1890,12 @@
     2,
     3
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.4,
+   "avg_sim": 0.735,
+   "weak_ayahs": [
+    1
+   ],
+   "manual_revise": true
   },
   "104": {
    "ayahs": 9,
@@ -1835,11 +1910,10 @@
     8,
     9
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.862,
+   "avg_sim": 0.954,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "105": {
    "ayahs": 5,
@@ -1850,11 +1924,10 @@
     4,
     5
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.918,
+   "avg_sim": 0.961,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "106": {
    "ayahs": 4,
@@ -1864,11 +1937,12 @@
     3,
     4
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.22,
+   "avg_sim": 0.743,
+   "weak_ayahs": [
+    1
+   ],
+   "manual_revise": true
   },
   "107": {
    "ayahs": 7,
@@ -1881,11 +1955,10 @@
     6,
     7
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.967,
+   "avg_sim": 0.99,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "108": {
    "ayahs": 3,
@@ -1894,11 +1967,10 @@
     2,
     3
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.901,
+   "avg_sim": 0.944,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "109": {
    "ayahs": 6,
@@ -1910,11 +1982,12 @@
     5,
     6
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.719,
+   "avg_sim": 0.928,
+   "weak_ayahs": [
+    1
+   ],
+   "manual_revise": true
   },
   "110": {
    "ayahs": 3,
@@ -1923,11 +1996,10 @@
     2,
     3
    ],
-   "min_sim": null,
-   "avg_sim": null,
+   "min_sim": 0.789,
+   "avg_sim": 0.846,
    "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "manual_revise": false
   },
   "111": {
    "ayahs": 5,
@@ -1938,11 +2010,12 @@
     4,
     5
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.263,
+   "avg_sim": 0.82,
+   "weak_ayahs": [
+    1
+   ],
+   "manual_revise": true
   },
   "112": {
    "ayahs": 4,
@@ -1968,11 +2041,14 @@
     4,
     5
    ],
-   "min_sim": null,
-   "avg_sim": null,
-   "weak_ayahs": [],
-   "manual_revise": false,
-   "note": "cut before _report.json was introduced; assumed reviewed"
+   "min_sim": 0.268,
+   "avg_sim": 0.662,
+   "weak_ayahs": [
+    1,
+    2,
+    3
+   ],
+   "manual_revise": true
   },
   "114": {
    "ayahs": 6,

@@ -1,0 +1,34 @@
+{
+ "surah": "103",
+ "name": "العصر",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\103\\103_source.mp3",
+ "ayahs_expected": 3,
+ "ayahs_found": 3,
+ "complete": true,
+ "weak": [
+  1
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 5.53,
+   "end": 9.73,
+   "sim": 0.4
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 9.73,
+   "end": 14.37,
+   "sim": 0.882
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 14.37,
+   "end": 22.72,
+   "sim": 0.924
+  }
+ ]
+}

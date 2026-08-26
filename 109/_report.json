@@ -1,0 +1,55 @@
+{
+ "surah": "109",
+ "name": "الكافرون",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\109\\109_source.mp3",
+ "ayahs_expected": 6,
+ "ayahs_found": 6,
+ "complete": true,
+ "weak": [
+  1
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 21.9,
+   "end": 34.1,
+   "sim": 0.719
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 34.1,
+   "end": 44.81,
+   "sim": 1.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 44.81,
+   "end": 57.33,
+   "sim": 0.981
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 57.33,
+   "end": 66.85,
+   "sim": 0.986
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 66.85,
+   "end": 77.81,
+   "sim": 0.988
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 77.81,
+   "end": 85.46,
+   "sim": 0.894
+  }
+ ]
+}

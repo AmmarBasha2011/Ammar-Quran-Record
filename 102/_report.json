@@ -1,0 +1,67 @@
+{
+ "surah": "102",
+ "name": "التكاثر",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\102\\102_source.mp3",
+ "ayahs_expected": 8,
+ "ayahs_found": 8,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 12.24,
+   "end": 15.87,
+   "sim": 0.944
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 15.87,
+   "end": 19.29,
+   "sim": 1.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 19.29,
+   "end": 24.09,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 24.09,
+   "end": 30.99,
+   "sim": 1.0
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 30.99,
+   "end": 37.24,
+   "sim": 1.0
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 37.24,
+   "end": 42.32,
+   "sim": 1.0
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 42.32,
+   "end": 50.17,
+   "sim": 1.0
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 50.17,
+   "end": 59.2,
+   "sim": 0.87
+  }
+ ]
+}

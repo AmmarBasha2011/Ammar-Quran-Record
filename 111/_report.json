@@ -1,0 +1,48 @@
+{
+ "surah": "111",
+ "name": "المسد",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\111\\111_source.mp3",
+ "ayahs_expected": 5,
+ "ayahs_found": 5,
+ "complete": true,
+ "weak": [
+  1
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 16.24,
+   "end": 33.11,
+   "sim": 0.263
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 33.11,
+   "end": 45.0,
+   "sim": 1.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 45.0,
+   "end": 51.07,
+   "sim": 0.872
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 51.07,
+   "end": 59.94,
+   "sim": 0.982
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 59.94,
+   "end": 68.88,
+   "sim": 0.985
+  }
+ ]
+}

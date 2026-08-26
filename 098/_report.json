@@ -1,0 +1,69 @@
+{
+ "surah": "098",
+ "name": "البينة",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\098\\098_source.mp3",
+ "ayahs_expected": 8,
+ "ayahs_found": 8,
+ "complete": true,
+ "weak": [
+  4
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 11.4,
+   "end": 24.62,
+   "sim": 0.926
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 24.62,
+   "end": 31.93,
+   "sim": 0.918
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 31.93,
+   "end": 36.39,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 36.39,
+   "end": 59.39,
+   "sim": 0.747
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 59.39,
+   "end": 76.13,
+   "sim": 0.87
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 76.14,
+   "end": 99.34,
+   "sim": 0.895
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 99.34,
+   "end": 110.93,
+   "sim": 0.975
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 110.93,
+   "end": 142.4,
+   "sim": 0.855
+  }
+ ]
+}

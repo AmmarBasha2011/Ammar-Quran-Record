@@ -1,0 +1,67 @@
+{
+ "surah": "099",
+ "name": "الزلزلة",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\099\\099_source.mp3",
+ "ayahs_expected": 8,
+ "ayahs_found": 8,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 4.62,
+   "end": 9.67,
+   "sim": 0.967
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 9.67,
+   "end": 13.83,
+   "sim": 0.968
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 13.83,
+   "end": 19.77,
+   "sim": 0.987
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 19.78,
+   "end": 24.69,
+   "sim": 1.0
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 24.69,
+   "end": 29.99,
+   "sim": 0.891
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 29.99,
+   "end": 39.31,
+   "sim": 0.932
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 39.31,
+   "end": 46.99,
+   "sim": 1.0
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 46.99,
+   "end": 55.5,
+   "sim": 0.952
+  }
+ ]
+}

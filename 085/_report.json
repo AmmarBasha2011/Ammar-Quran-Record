@@ -1,0 +1,168 @@
+{
+ "surah": "085",
+ "name": "البروج",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\085\\085_source.mp3",
+ "ayahs_expected": 22,
+ "ayahs_found": 22,
+ "complete": true,
+ "weak": [
+  4,
+  20
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 15.66,
+   "end": 21.69,
+   "sim": 0.939
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 21.69,
+   "end": 24.31,
+   "sim": 0.923
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 24.31,
+   "end": 29.49,
+   "sim": 0.97
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 29.49,
+   "end": 36.83,
+   "sim": 0.73
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 36.83,
+   "end": 41.59,
+   "sim": 0.982
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 41.59,
+   "end": 48.37,
+   "sim": 0.976
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 48.37,
+   "end": 56.71,
+   "sim": 0.993
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 56.71,
+   "end": 69.46,
+   "sim": 0.975
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 69.46,
+   "end": 83.25,
+   "sim": 0.844
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 83.25,
+   "end": 104.17,
+   "sim": 0.989
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 104.17,
+   "end": 129.65,
+   "sim": 0.966
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 129.65,
+   "end": 135.65,
+   "sim": 0.967
+  },
+  {
+   "ayah": 13,
+   "file": "013.mp3",
+   "start": 135.65,
+   "end": 142.05,
+   "sim": 0.917
+  },
+  {
+   "ayah": 14,
+   "file": "014.mp3",
+   "start": 142.05,
+   "end": 148.31,
+   "sim": 0.952
+  },
+  {
+   "ayah": 15,
+   "file": "015.mp3",
+   "start": 148.31,
+   "end": 152.79,
+   "sim": 0.767
+  },
+  {
+   "ayah": 16,
+   "file": "016.mp3",
+   "start": 152.79,
+   "end": 157.34,
+   "sim": 0.985
+  },
+  {
+   "ayah": 17,
+   "file": "017.mp3",
+   "start": 157.34,
+   "end": 164.23,
+   "sim": 0.81
+  },
+  {
+   "ayah": 18,
+   "file": "018.mp3",
+   "start": 164.23,
+   "end": 168.51,
+   "sim": 0.909
+  },
+  {
+   "ayah": 19,
+   "file": "019.mp3",
+   "start": 168.51,
+   "end": 174.97,
+   "sim": 1.0
+  },
+  {
+   "ayah": 20,
+   "file": "020.mp3",
+   "start": 174.97,
+   "end": 196.71,
+   "sim": 0.536
+  },
+  {
+   "ayah": 21,
+   "file": "021.mp3",
+   "start": 196.71,
+   "end": 198.44,
+   "sim": 0.981
+  },
+  {
+   "ayah": 22,
+   "file": "022.mp3",
+   "start": 198.47,
+   "end": 198.97,
+   "sim": 0.975
+  }
+ ]
+}

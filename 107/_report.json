@@ -1,0 +1,60 @@
+{
+ "surah": "107",
+ "name": "الماعون",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\107\\107_source.mp3",
+ "ayahs_expected": 7,
+ "ayahs_found": 7,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 10.53,
+   "end": 15.25,
+   "sim": 0.967
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 15.25,
+   "end": 20.07,
+   "sim": 0.986
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 20.07,
+   "end": 26.79,
+   "sim": 1.0
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 26.79,
+   "end": 30.77,
+   "sim": 1.0
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 30.77,
+   "end": 37.51,
+   "sim": 1.0
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 37.51,
+   "end": 44.7,
+   "sim": 1.0
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 44.7,
+   "end": 48.3,
+   "sim": 0.974
+  }
+ ]
+}

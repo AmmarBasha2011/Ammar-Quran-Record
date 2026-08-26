@@ -1,0 +1,135 @@
+{
+ "surah": "086",
+ "name": "الطارق",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\086\\086_source.mp3",
+ "ayahs_expected": 17,
+ "ayahs_found": 17,
+ "complete": true,
+ "weak": [
+  1,
+  2,
+  6,
+  13
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 0.0,
+   "end": 7.91,
+   "sim": 0.214
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 7.91,
+   "end": 24.03,
+   "sim": 0.476
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 24.03,
+   "end": 27.77,
+   "sim": 0.84
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 27.77,
+   "end": 38.62,
+   "sim": 1.0
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 38.62,
+   "end": 45.53,
+   "sim": 0.799
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 45.53,
+   "end": 55.13,
+   "sim": 0.606
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 55.13,
+   "end": 63.98,
+   "sim": 0.878
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 63.98,
+   "end": 71.05,
+   "sim": 0.975
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 71.05,
+   "end": 79.23,
+   "sim": 0.989
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 79.23,
+   "end": 89.85,
+   "sim": 0.877
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 89.85,
+   "end": 96.17,
+   "sim": 0.926
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 96.17,
+   "end": 100.45,
+   "sim": 0.889
+  },
+  {
+   "ayah": 13,
+   "file": "013.mp3",
+   "start": 100.45,
+   "end": 104.25,
+   "sim": 0.722
+  },
+  {
+   "ayah": 14,
+   "file": "014.mp3",
+   "start": 104.25,
+   "end": 110.63,
+   "sim": 0.833
+  },
+  {
+   "ayah": 15,
+   "file": "015.mp3",
+   "start": 110.63,
+   "end": 117.41,
+   "sim": 0.963
+  },
+  {
+   "ayah": 16,
+   "file": "016.mp3",
+   "start": 117.41,
+   "end": 121.57,
+   "sim": 1.0
+  },
+  {
+   "ayah": 17,
+   "file": "017.mp3",
+   "start": 121.57,
+   "end": 130.8,
+   "sim": 0.895
+  }
+ ]
+}

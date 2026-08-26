@@ -1,0 +1,88 @@
+{
+ "surah": "101",
+ "name": "القارعة",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\101\\101_source.mp3",
+ "ayahs_expected": 11,
+ "ayahs_found": 11,
+ "complete": true,
+ "weak": [],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 10.08,
+   "end": 12.09,
+   "sim": 1.0
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 12.09,
+   "end": 14.01,
+   "sim": 1.0
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 14.01,
+   "end": 18.69,
+   "sim": 0.967
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 18.69,
+   "end": 24.93,
+   "sim": 0.98
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 24.93,
+   "end": 32.73,
+   "sim": 1.0
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 32.73,
+   "end": 38.73,
+   "sim": 0.856
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 38.73,
+   "end": 41.59,
+   "sim": 0.902
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 41.59,
+   "end": 46.61,
+   "sim": 0.86
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 46.61,
+   "end": 50.15,
+   "sim": 1.0
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 50.15,
+   "end": 54.59,
+   "sim": 0.956
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 54.59,
+   "end": 57.84,
+   "sim": 0.889
+  }
+ ]
+}
