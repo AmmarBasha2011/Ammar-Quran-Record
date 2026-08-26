@@ -1,6 +1,5 @@
 {
- "_description": "قائمة السور المتوفرة في هذا الأرشيف — Available surahs with accuracy metrics",
- "_note_accuracy": "accuracy = متوسط نسبة مطابقة النص المسموع مع نص المصحف عند التقسيم والتحقق",
+ "_description": "قائمة السور المتوفرة — Available surahs with accuracy metrics",
  "total_surahs": 30,
  "total_ayat": 454,
  "surahs": {
@@ -12,13 +11,7 @@
    "ayahs_available": 40,
    "complete": true,
    "split_accuracy_avg": 0.926,
-   "min_sim": 0.636,
-   "manually_verified": [
-    1,
-    8,
-    34,
-    38
-   ]
+   "min_sim": 0.636
   },
   "079": {
    "number": 79,
@@ -28,15 +21,7 @@
    "ayahs_available": 46,
    "complete": true,
    "split_accuracy_avg": 0.853,
-   "min_sim": 0.468,
-   "manually_verified": [
-    1,
-    13,
-    23,
-    25,
-    34,
-    45
-   ]
+   "min_sim": 0.468
   },
   "080": {
    "number": 80,
@@ -46,18 +31,7 @@
    "ayahs_available": 42,
    "complete": true,
    "split_accuracy_avg": 0.837,
-   "min_sim": 0.0,
-   "manually_verified": [
-    9,
-    32,
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    42
-   ]
+   "min_sim": 0.0
   },
   "081": {
    "number": 81,
@@ -67,12 +41,7 @@
    "ayahs_available": 29,
    "complete": true,
    "split_accuracy_avg": 0.939,
-   "min_sim": 0.787,
-   "manually_verified": [
-    24,
-    28,
-    29
-   ]
+   "min_sim": 0.787
   },
   "082": {
    "number": 82,
@@ -82,8 +51,7 @@
    "ayahs_available": 19,
    "complete": true,
    "split_accuracy_avg": 0.932,
-   "min_sim": 0.713,
-   "manually_verified": []
+   "min_sim": 0.713
   },
   "083": {
    "number": 83,
@@ -93,8 +61,7 @@
    "ayahs_available": 36,
    "complete": true,
    "split_accuracy_avg": 0.898,
-   "min_sim": 0.524,
-   "manually_verified": []
+   "min_sim": 0.524
   },
   "084": {
    "number": 84,
@@ -104,8 +71,7 @@
    "ayahs_available": 25,
    "complete": true,
    "split_accuracy_avg": 0.947,
-   "min_sim": 0.825,
-   "manually_verified": []
+   "min_sim": 0.825
   },
   "085": {
    "number": 85,
@@ -115,8 +81,7 @@
    "ayahs_available": 22,
    "complete": true,
    "split_accuracy_avg": 0.933,
-   "min_sim": 0.767,
-   "manually_verified": []
+   "min_sim": 0.767
   },
   "088": {
    "number": 88,
@@ -126,8 +91,7 @@
    "ayahs_available": 26,
    "complete": true,
    "split_accuracy_avg": 0.914,
-   "min_sim": 0.718,
-   "manually_verified": []
+   "min_sim": 0.718
   },
   "089": {
    "number": 89,
@@ -137,12 +101,7 @@
    "ayahs_available": 30,
    "complete": true,
    "split_accuracy_avg": 0.926,
-   "min_sim": 0.769,
-   "manually_verified": [
-    16,
-    23,
-    24
-   ]
+   "min_sim": 0.769
   },
   "090": {
    "number": 90,
@@ -152,8 +111,7 @@
    "ayahs_available": 20,
    "complete": true,
    "split_accuracy_avg": 0.928,
-   "min_sim": 0.578,
-   "manually_verified": []
+   "min_sim": 0.578
   },
   "094": {
    "number": 94,
@@ -163,8 +121,7 @@
    "ayahs_available": 8,
    "complete": true,
    "split_accuracy_avg": 0.955,
-   "min_sim": 0.833,
-   "manually_verified": []
+   "min_sim": 0.833
   },
   "097": {
    "number": 97,
@@ -174,12 +131,7 @@
    "ayahs_available": 5,
    "complete": true,
    "split_accuracy_avg": 0.877,
-   "min_sim": 0.781,
-   "manually_verified": [
-    1,
-    2,
-    3
-   ]
+   "min_sim": 0.781
   },
   "098": {
    "number": 98,
@@ -189,11 +141,7 @@
    "ayahs_available": 8,
    "complete": true,
    "split_accuracy_avg": 0.896,
-   "min_sim": 0.731,
-   "manually_verified": [
-    4,
-    5
-   ]
+   "min_sim": 0.731
   },
   "099": {
    "number": 99,
@@ -203,8 +151,7 @@
    "ayahs_available": 8,
    "complete": true,
    "split_accuracy_avg": 0.936,
-   "min_sim": 0.882,
-   "manually_verified": []
+   "min_sim": 0.882
   },
   "100": {
    "number": 100,
@@ -214,8 +161,7 @@
    "ayahs_available": 11,
    "complete": true,
    "split_accuracy_avg": 0.876,
-   "min_sim": 0.533,
-   "manually_verified": []
+   "min_sim": 0.533
   },
   "101": {
    "number": 101,
@@ -225,8 +171,7 @@
    "ayahs_available": 11,
    "complete": true,
    "split_accuracy_avg": 0.954,
-   "min_sim": 0.856,
-   "manually_verified": []
+   "min_sim": 0.856
   },
   "102": {
    "number": 102,
@@ -236,10 +181,7 @@
    "ayahs_available": 8,
    "complete": true,
    "split_accuracy_avg": 0.973,
-   "min_sim": 0.859,
-   "manually_verified": [
-    1
-   ]
+   "min_sim": 0.859
   },
   "103": {
    "number": 103,
@@ -249,8 +191,7 @@
    "ayahs_available": 3,
    "complete": true,
    "split_accuracy_avg": 0.943,
-   "min_sim": 0.882,
-   "manually_verified": []
+   "min_sim": 0.882
   },
   "104": {
    "number": 104,
@@ -260,8 +201,7 @@
    "ayahs_available": 9,
    "complete": true,
    "split_accuracy_avg": 0.976,
-   "min_sim": 0.933,
-   "manually_verified": []
+   "min_sim": 0.933
   },
   "105": {
    "number": 105,
@@ -271,8 +211,7 @@
    "ayahs_available": 5,
    "complete": true,
    "split_accuracy_avg": 0.961,
-   "min_sim": 0.939,
-   "manually_verified": []
+   "min_sim": 0.939
   },
   "106": {
    "number": 106,
@@ -282,8 +221,7 @@
    "ayahs_available": 4,
    "complete": true,
    "split_accuracy_avg": 0.927,
-   "min_sim": 0.85,
-   "manually_verified": []
+   "min_sim": 0.85
   },
   "107": {
    "number": 107,
@@ -293,8 +231,7 @@
    "ayahs_available": 7,
    "complete": true,
    "split_accuracy_avg": 0.984,
-   "min_sim": 0.949,
-   "manually_verified": []
+   "min_sim": 0.949
   },
   "108": {
    "number": 108,
@@ -304,8 +241,7 @@
    "ayahs_available": 3,
    "complete": true,
    "split_accuracy_avg": 0.957,
-   "min_sim": 0.935,
-   "manually_verified": []
+   "min_sim": 0.935
   },
   "109": {
    "number": 109,
@@ -315,8 +251,7 @@
    "ayahs_available": 6,
    "complete": true,
    "split_accuracy_avg": 0.942,
-   "min_sim": 0.802,
-   "manually_verified": []
+   "min_sim": 0.802
   },
   "110": {
    "number": 110,
@@ -326,8 +261,7 @@
    "ayahs_available": 3,
    "complete": true,
    "split_accuracy_avg": 0.853,
-   "min_sim": 0.789,
-   "manually_verified": []
+   "min_sim": 0.789
   },
   "111": {
    "number": 111,
@@ -337,8 +271,7 @@
    "ayahs_available": 5,
    "complete": true,
    "split_accuracy_avg": 0.874,
-   "min_sim": 0.748,
-   "manually_verified": []
+   "min_sim": 0.748
   },
   "112": {
    "number": 112,
@@ -348,8 +281,7 @@
    "ayahs_available": 4,
    "complete": true,
    "split_accuracy_avg": 0.908,
-   "min_sim": 0.819,
-   "manually_verified": []
+   "min_sim": 0.819
   },
   "113": {
    "number": 113,
@@ -359,8 +291,7 @@
    "ayahs_available": 5,
    "complete": true,
    "split_accuracy_avg": 0.886,
-   "min_sim": 0.806,
-   "manually_verified": []
+   "min_sim": 0.806
   },
   "114": {
    "number": 114,
@@ -370,8 +301,7 @@
    "ayahs_available": 6,
    "complete": true,
    "split_accuracy_avg": 0.869,
-   "min_sim": 0.658,
-   "manually_verified": []
+   "min_sim": 0.658
   }
  }
 }
