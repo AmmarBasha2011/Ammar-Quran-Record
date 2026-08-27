@@ -1,23 +1,17 @@
-name: Video Autopost (random surah -> YouTube via webhook)
+name: Video Autopost (random surah -> YouTube Short)
 
-# Generates a short video from a random surah/ayah range using repo assets,
-# uploads it to GitHub Pages (public raw URL), pings the publishing webhook,
-# waits 5 min for the automation to post it, then deletes the video from repo+Pages.
-#
-# NOTE: assets/backgrounds/* are committed once to the repo (copied from
-# QuranVideoGeneratorAPI/assets/backgrounds). The workflow only READS them.
-#
-# Secrets needed (repo Settings -> Secrets):
-#   GITHUB_TOKEN  (provided automatically by Actions; needs `contents: write`)
-#   (no API server needed — backgrounds live in-repo)
+# Generates a vertical (9:16) YouTube Short from a random surah/ayah range
+# using repo audio + backgrounds, then uploads it DIRECTLY to YouTube
+# (no middleman / no webhook). Runs every 4 hours to stay under the
+# YouTube Data API daily quota (10,000 units; one upload = 1600 units).
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 minutes; change to "0 * * * *" for hourly
-  workflow_dispatch:         # manual trigger from Actions tab
+    - cron: "0 */4 * * *"   # every 4 hours -> ~6 uploads/day (safe quota)
+  workflow_dispatch:        # manual trigger from Actions tab
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   make-video:
@@ -32,8 +26,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Install ffmpeg + youtube libs
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install --quiet google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 
       - name: Pick random surah + ayah range
         id: pick
@@ -84,48 +80,12 @@ jobs:
             build/video.mp4
           echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
 
-      - name: Upload video to GitHub Pages (public raw URL)
-        id: upload
+      - name: Upload Short directly to YouTube
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: |
           KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
           START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
-          mkdir -p site/videos
-          cp build/video.mp4 "site/videos/vid-$KEY-$START-$END.mp4"
-          git config user.email "bot@intex.team"; git config user.name "INEX Bot"
-          git add "site/videos/vid-$KEY-$START-$END.mp4"
-          git commit -m "temp: publish video $KEY $START-$END" || true
-          git pull --rebase origin main
-          git push origin main
-          # wait for Pages to deploy
-          sleep 60
-          VURL="https://ammarbasha2011.github.io/Ammar-Quran-Record/videos/vid-$KEY-$START-$END.mp4"
-          echo "video_url=$VURL" >> "$GITHUB_OUTPUT"
-          echo "VIDEO_URL=$VURL" >> "$GITHUB_ENV"
-          echo "videofile=site/videos/vid-$KEY-$START-$END.mp4" >> "$GITHUB_OUTPUT"
-
-      - name: Send webhook (public raw video URL + metadata)
-        run: |
-          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
-          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
-          VF="${{ steps.upload.outputs.videofile }}"
-          curl -sS -X POST "https://flow.sokt.io/func/scriY8Zfajvd" \
-            -H "Content-Type: application/json" \
-            -d "{\"video_url\":\"$VIDEO_URL\",\"surah_name\":\"$NAME\",\"surah_num\":$KEY,\"from_ayah\":$START,\"to_ayah\":$END,\"file\":\"$VF\",\"is_short\":true,\"type\":\"youtube_short\"}"
-          echo "webhook sent"
-
-      - name: Wait 5 min for automation to publish
-        run: sleep 300
-
-      - name: Delete temp video (cleanup from repo + Pages)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VF="${{ steps.upload.outputs.videofile }}"
-          git config user.email "bot@intex.team"; git config user.name "INEX Bot"
-          git rm -f "$VF" || true
-          git commit -m "temp: remove video" || true
-          git pull --rebase origin main
-          git push origin main
-          echo "video $VF deleted"
+          python tools/upload_youtube.py "$KEY" "$NAME" "$START" "$END"
