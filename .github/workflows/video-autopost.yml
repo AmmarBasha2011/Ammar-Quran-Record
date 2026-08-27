@@ -45,14 +45,14 @@ jobs:
           keys = sorted(av, key=int)
           key = random.choice(keys)
           n = av[key]["ayahs"]
-          # pick a range of 1-5 ayahs
-          span = random.randint(1, min(5, n))
+          # SHORTS: 1-2 ayahs only (YouTube Shorts must be < 60s, vertical 9:16)
+          span = random.randint(1, min(2, n))
           start = random.randint(1, n - span + 1)
           end = start + span - 1
           name = links.get(key, {}).get("name", f"surah-{key}")
           with open("pick.txt", "w") as f:
               f.write(f"{key}\n{name}\n{start}\n{end}\n")
-          print(f"picked surah {key} ({name}) ayahs {start}-{end}")
+          print(f"picked surah {key} ({name}) ayahs {start}-{end} (SHORT)")
           PY
 
       - name: Build video with ffmpeg
@@ -75,9 +75,9 @@ jobs:
           fi
           # get audio duration
           DUR=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 build/audio.mp3)
-          # make a 1280x720 video (bg scaled to fit) of that duration, mux audio
+          # make a vertical 1080x1920 (9:16) SHORT of that duration, mux audio
           ffmpeg -y -loop 1 -i "$BG" -i build/audio.mp3 \
-            -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2" \
+            -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2" \
             -c:v libx264 -tune stillimage -pix_fmt yuv420p -r 25 \
             -c:a aac -b:a 128k -shortest -t "$DUR" \
             build/video.mp4
@@ -111,7 +111,7 @@ jobs:
           VF="${{ steps.upload.outputs.videofile }}"
           curl -sS -X POST "https://flow.sokt.io/func/scriY8Zfajvd" \
             -H "Content-Type: application/json" \
-            -d "{\"video_url\":\"$VIDEO_URL\",\"surah_name\":\"$NAME\",\"surah_num\":$KEY,\"from_ayah\":$START,\"to_ayah\":$END,\"file\":\"$VF\"}"
+            -d "{\"video_url\":\"$VIDEO_URL\",\"surah_name\":\"$NAME\",\"surah_num\":$KEY,\"from_ayah\":$START,\"to_ayah\":$END,\"file\":\"$VF\",\"is_short\":true,\"type\":\"youtube_short\"}"
           echo "webhook sent"
 
       - name: Wait 5 min for automation to publish

@@ -170,17 +170,18 @@ python tools/add_surah.py 044
 
 ## 🎬 فيديو قرآني أوتوماتيكي (YouTube)
 
-الـ workflow `video-autopost.yml` بينشئ **فيديو قصير تلقائياً كل 30 دقيقة** ويصدره على YouTube:
+الـ workflow `video-autopost.yml` بينشئ **YouTube Short عمودي (9:16) تلقائياً كل 30 دقيقة** ويصدره على YouTube:
 
-1. يختار **سورة عشوائية** + **مدى آيات عشوائي** (1–5 آيات) من الأرشيف
-2. يركّب فيديو: الصوت من ملفات الـ MP3 + خلفية من `assets/backgrounds/` (منقولة من QuranVideoGeneratorAPI)
+1. يختار **سورة عشوائية** + **آية واحدة أو 2** (قصير < 60s عشان يبقى Short) من الأرشيف
+2. يركّب فيديو عمودي 1080x1920: الصوت من ملفات الـ MP3 + خلفية من `assets/backgrounds/` (منقولة من QuranVideoGeneratorAPI)
 3. يرفع الفيديو على **GitHub Pages** (رابط عام raw مباشر)
 4. يبعت **webhook** لـ `https://flow.sokt.io/func/scriY8Zfajvd` فيه:
    ```json
    {"video_url":"https://ammarbasha2011.github.io/.../vid-XXX.mp4",
-    "surah_name":"النور", "surah_num":24, "from_ayah":1, "to_ayah":3}
+    "surah_name":"النور", "surah_num":24, "from_ayah":1, "to_ayah":2,
+    "is_short":true, "type":"youtube_short"}
    ```
-5. الأوتوميشن بتاعك (n8n/sokt) بيسحب الفيديو وينشره على YouTube
+5. الأوتوميشن بتاعك (n8n/sokt) بيسحب الفيديو وينشره على YouTube **كـ Short**
 6. الـ workflow يستنى 5 دقايق ثم **يحذف الفيديو** من الـ repo + Pages (عشان الـ repo يفضل خفيف)
 
 ---
