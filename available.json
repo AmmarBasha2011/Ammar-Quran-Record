@@ -1,8 +1,8 @@
 {
  "_description": "Available recitation audio files (Ammar Elkhateeb / عمار الخطيب). Audio URL: https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{surah}/{ayah}.mp3",
  "_note_accuracy": "All files cut via forced-alignment (faster-whisper + tarteel). Quality metrics (min_sim/avg_sim/weak_ayahs/manual_revise) derived from each surah's _report.json.",
- "total_surahs": 63,
- "total_ayat": 1683,
+ "total_surahs": 65,
+ "total_ayat": 1721,
  "surahs": {
   "027": {
    "ayahs": 93,
@@ -1946,6 +1946,34 @@
    ],
    "manual_revise": true
   },
+  "087": {
+   "ayahs": 19,
+   "list": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "min_sim": 0.756,
+   "avg_sim": 0.923,
+   "weak_ayahs": [],
+   "manual_revise": false
+  },
   "088": {
    "ayahs": 26,
    "list": [
@@ -2174,6 +2202,38 @@
    "avg_sim": 0.94,
    "weak_ayahs": [],
    "manual_revise": false
+  },
+  "096": {
+   "ayahs": 19,
+   "list": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "min_sim": 0.4,
+   "avg_sim": 0.898,
+   "weak_ayahs": [
+    1,
+    12,
+    15
+   ],
+   "manual_revise": true
   },
   "097": {
    "ayahs": 5,
