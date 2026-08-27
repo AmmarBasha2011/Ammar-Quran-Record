@@ -64,13 +64,21 @@ jobs:
           ffmpeg -y $(for a in $(seq $START $END); do echo -n "-i $KEY/$(printf '%03d' $a).mp3 "; done) \
             -filter_complex "[0:a]$(for i in $(seq 1 $((END-START))); do echo -n "[$i:a]"; done)concat=n=$((END-START+1)):v=0:a=1[aout]" \
             -map "[aout]" build/audio.mp3
-          # pick a random background
-          BG=$(ls assets/backgrounds/*.{jpg,jpeg,png,webp} 2>/dev/null | shuf -n1)
+          # pick a random background (prefer jpg/png; convert webp first)
+          RAWBG=$(ls assets/backgrounds/*.{jpg,jpeg,png,webp} 2>/dev/null | shuf -n1)
+          EXT="${RAWBG##*.}"
+          if [ "$EXT" = "webp" ]; then
+            BG="build/bg.png"
+            ffmpeg -y -i "$RAWBG" "$BG"
+          else
+            BG="$RAWBG"
+          fi
           # get audio duration
           DUR=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 build/audio.mp3)
-          # make a still video (bg image) of that duration, mux audio
+          # make a 1280x720 video (bg scaled to fit) of that duration, mux audio
           ffmpeg -y -loop 1 -i "$BG" -i build/audio.mp3 \
-            -c:v libx264 -tune stillimage -pix_fmt yuv420p \
+            -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2" \
+            -c:v libx264 -tune stillimage -pix_fmt yuv420p -r 25 \
             -c:a aac -b:a 128k -shortest -t "$DUR" \
             build/video.mp4
           echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
