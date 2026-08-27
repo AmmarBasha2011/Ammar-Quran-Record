@@ -161,9 +161,9 @@ python tools/add_surah.py 044
 | `silence-check.yml` | كل commit | يتأكد إن كل آية فيها صوت فعلاً (مش صامتة/فاضية) |
 | `stale-issue.yml` | أسبوعياً | يقفل Issues الآيات الضعيفة لو اتصلحت وبقت stale |
 
-**الاستماع المباشر:** الموقع المنشور على GitHub Pages وفيه مشغّل صوت لكل آية، وكمان **RSS feed** للبودكاست.
-
----
+**الاستماع المباشر:**
+- 🌐 **الموقع:** https://ammarbasha2011.github.io/Ammar-Quran-Record/ — فيه مشغّل صوت لكل آية (يُبنى تلقائياً عبر `pages-site.yml`)
+- 📻 **RSS Podcast feed:** `feed/quran.xml` — يتحدّث تلقائياً عبر `rss-feed.yml` (يفتح في أي تطبيق بودكاست)
 
 ---
 
