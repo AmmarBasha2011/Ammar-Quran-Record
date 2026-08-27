@@ -1,8 +1,8 @@
 name: Video Autopost (random surah -> YouTube via webhook)
 
 # Generates a short video from a random surah/ayah range using repo assets,
-# uploads it as a GitHub Release (public raw URL), pings the publishing webhook,
-# waits 5 min for the automation to post it, then deletes the release.
+# uploads it to GitHub Pages (public raw URL), pings the publishing webhook,
+# waits 5 min for the automation to post it, then deletes the video from repo+Pages.
 #
 # NOTE: assets/backgrounds/* are committed once to the repo (copied from
 # QuranVideoGeneratorAPI/assets/backgrounds). The workflow only READS them.
@@ -75,38 +75,46 @@ jobs:
             build/video.mp4
           echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
 
-      - name: Upload video as GitHub Release (public raw URL)
+      - name: Upload video to GitHub Pages (public raw URL)
         id: upload
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
           START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
-          TAG="vid-$(date +%s)"
-          gh release create "$TAG" build/video.mp4 --title "Auto video $KEY $START-$END" --notes "temp"
-          # raw public URL
-          VURL="https://github.com/${{ github.repository }}/releases/download/$TAG/video.mp4"
+          mkdir -p site/videos
+          cp build/video.mp4 "site/videos/vid-$KEY-$START-$END.mp4"
+          git config user.email "bot@intex.team"; git config user.name "INEX Bot"
+          git add -A
+          git commit -m "temp: publish video $KEY $START-$END" || true
+          git push origin main
+          # wait for Pages to deploy
+          sleep 60
+          VURL="https://ammarbasha2011.github.io/Ammar-Quran-Record/videos/vid-$KEY-$START-$END.mp4"
           echo "video_url=$VURL" >> "$GITHUB_OUTPUT"
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "VIDEO_URL=$VURL" >> "$GITHUB_ENV"
+          echo "videofile=site/videos/vid-$KEY-$START-$END.mp4" >> "$GITHUB_OUTPUT"
 
       - name: Send webhook (public raw video URL + metadata)
         run: |
           KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
           START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
-          TAG="${{ steps.upload.outputs.tag }}"
+          VF="${{ steps.upload.outputs.videofile }}"
           curl -sS -X POST "https://flow.sokt.io/func/scriY8Zfajvd" \
             -H "Content-Type: application/json" \
-            -d "{\"video_url\":\"$VIDEO_URL\",\"surah_name\":\"$NAME\",\"surah_num\":$KEY,\"from_ayah\":$START,\"to_ayah\":$END,\"tag\":\"$TAG\"}"
+            -d "{\"video_url\":\"$VIDEO_URL\",\"surah_name\":\"$NAME\",\"surah_num\":$KEY,\"from_ayah\":$START,\"to_ayah\":$END,\"file\":\"$VF\"}"
           echo "webhook sent"
 
       - name: Wait 5 min for automation to publish
         run: sleep 300
 
-      - name: Delete temp release (cleanup)
+      - name: Delete temp video (cleanup from repo + Pages)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG="${{ steps.upload.outputs.tag }}"
-          gh release delete "$TAG" --yes || true
-          echo "release $TAG deleted"
+          VF="${{ steps.upload.outputs.videofile }}"
+          git config user.email "bot@intex.team"; git config user.name "INEX Bot"
+          git rm -f "$VF" || true
+          git commit -m "temp: remove video" || true
+          git push origin main
+          echo "video $VF deleted"
