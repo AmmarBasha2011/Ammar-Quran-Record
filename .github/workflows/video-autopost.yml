@@ -45,8 +45,8 @@ jobs:
           keys = sorted(av, key=int)
           key = random.choice(keys)
           n = av[key]["ayahs"]
-          # SHORTS: 1-2 ayahs only (YouTube Shorts must be < 60s, vertical 9:16)
-          span = random.randint(1, min(2, n))
+          # SHORTS: 1-3 ayahs (YouTube Shorts max = 3 min / 180s; best 15-45s)
+          span = random.randint(1, min(3, n))
           start = random.randint(1, n - span + 1)
           end = start + span - 1
           name = links.get(key, {}).get("name", f"surah-{key}")
@@ -76,10 +76,11 @@ jobs:
           # get audio duration
           DUR=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 build/audio.mp3)
           # make a vertical 1080x1920 (9:16) SHORT of that duration, mux audio
+          # cap at 175s to stay safely under YouTube Shorts 180s limit
           ffmpeg -y -loop 1 -i "$BG" -i build/audio.mp3 \
             -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2" \
             -c:v libx264 -tune stillimage -pix_fmt yuv420p -r 25 \
-            -c:a aac -b:a 128k -shortest -t "$DUR" \
+            -c:a aac -b:a 128k -shortest -t "$DUR" -t 175 \
             build/video.mp4
           echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
 
