@@ -34,7 +34,7 @@ for key in sorted(surahs, key=int):
         url = f"{raw}/{key}/{a:03d}.mp3"
         cls = " w" if a in weak else ""
         ayahs.append(
-            f'<div class="ayah{cls}">'
+            f'<div class="ayah{cls}" id="a{key}-{a:03d}">'
             f'<span class="a-n">{a:03d}</span>'
             f'<audio controls preload="none" src="{url}"></audio>'
             f'</div>')
@@ -143,7 +143,8 @@ SCRIPT = """\
     empty=document.getElementById('empty'),count=document.getElementById('count'),
     all=[].slice.call(list.querySelectorAll('.surah'));
   function filter(){
-    var t=q.value.trim().toLowerCase(),tq=isNaN(t)?null:+t,shown=0;
+    var t=q.value.trim().toLowerCase(),tq=null,shown=0;
+    tq=(t!==''&&!isNaN(t))?+t:null;
     all.forEach(function(c){
       var name=c.dataset.name.toLowerCase(),num=+c.dataset.num;
       var ok=(!t)||name.indexOf(t)>-1||(tq!==null&&num===tq);
@@ -153,6 +154,21 @@ SCRIPT = """\
     count.textContent=shown+' من '+all.length+' سورة';
   }
   q.addEventListener('input',filter); filter();
+
+  // Deep-link: open surah card + scroll to + play ayah from #a035-011
+  function goAyah(){
+    var h=location.hash.match(/^#a([0-9]{3})-([0-9]{3})$/);
+    if(!h) return;
+    var card=document.querySelector('.surah[data-num="'+parseInt(h[1],10)+'"]');
+    if(!card) return;
+    card.open=true;
+    var el=document.getElementById('a'+h[1]+'-'+h[2]);
+    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'});
+      el.style.outline='3px solid #A855F7';
+      setTimeout(function(){ var a=el.querySelector('audio'); if(a) a.play().catch(function(){}); },600);
+    }
+  }
+  window.addEventListener('hashchange',goAyah); goAyah();
 </script>
 </body>
 </html>

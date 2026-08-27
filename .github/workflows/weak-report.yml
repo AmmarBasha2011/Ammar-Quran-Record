@@ -40,7 +40,8 @@ jobs:
           for key, name, ayahs, msim in weak:
               lines.append(f"## {key} {name} (min_sim={msim})")
               for a in ayahs:
-                  lines.append(f"- [{key}/{a:03d}](https://raw.githubusercontent.com/{repo_name}/main/{key}/{a:03d}.mp3) — ayah {a}")
+                  page = f"https://{repo_name.replace('/', '.github.io/')}#{key}-{a:03d}"
+                  lines.append(f"- [{key}/{a:03d}]({page}) — ayah {a} (listen online)")
               lines.append("")
           open("weak_report.md", "w", encoding="utf-8").write("\n".join(lines))
           print(f"Wrote weak_report.md with {len(weak)} surahs")
