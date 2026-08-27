@@ -30,13 +30,15 @@ jobs:
           repo_name = os.environ.get("GITHUB_REPOSITORY", "AmmarBasha2011/Ammar-Quran-Record")
 
           weak = []
+          total_ayahs = 0
           for key in sorted(av["surahs"], key=int):
               s = av["surahs"][key]
               if s.get("manual_revise") and s.get("weak_ayahs"):
                   name = links.get(key, {}).get("name", "?")
                   weak.append((key, name, s["weak_ayahs"], s.get("min_sim")))
+                  total_ayahs += len(s["weak_ayahs"])
 
-          lines = [f"# Weak Ayahs Report — {len(weak)} surahs need review\n"]
+          lines = [f"# Weak Ayahs Report — {len(weak)} surahs need review ({total_ayahs} weak ayahs total)\n"]
           for key, name, ayahs, msim in weak:
               lines.append(f"## {key} {name} (min_sim={msim})")
               for a in ayahs:
