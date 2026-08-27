@@ -1,0 +1,112 @@
+name: Video Autopost (random surah -> YouTube via webhook)
+
+# Generates a short video from a random surah/ayah range using repo assets,
+# uploads it as a GitHub Release (public raw URL), pings the publishing webhook,
+# waits 5 min for the automation to post it, then deletes the release.
+#
+# NOTE: assets/backgrounds/* are committed once to the repo (copied from
+# QuranVideoGeneratorAPI/assets/backgrounds). The workflow only READS them.
+#
+# Secrets needed (repo Settings -> Secrets):
+#   GITHUB_TOKEN  (provided automatically by Actions; needs `contents: write`)
+#   (no API server needed — backgrounds live in-repo)
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes; change to "0 * * * *" for hourly
+  workflow_dispatch:         # manual trigger from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  make-video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Pick random surah + ayah range
+        id: pick
+        run: |
+          python - <<'PY'
+          import os, json, random
+          av = json.load(open("available.json", encoding="utf-8"))["surahs"]
+          links = json.load(open("links.json", encoding="utf-8")).get("links", {})
+          keys = sorted(av, key=int)
+          key = random.choice(keys)
+          n = av[key]["ayahs"]
+          # pick a range of 1-5 ayahs
+          span = random.randint(1, min(5, n))
+          start = random.randint(1, n - span + 1)
+          end = start + span - 1
+          name = links.get(key, {}).get("name", f"surah-{key}")
+          with open("pick.txt", "w") as f:
+              f.write(f"{key}\n{name}\n{start}\n{end}\n")
+          print(f"picked surah {key} ({name}) ayahs {start}-{end}")
+          PY
+
+      - name: Build video with ffmpeg
+        run: |
+          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
+          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
+          mkdir -p build
+          # concatenate the ayah audio clips
+          ffmpeg -y $(for a in $(seq $START $END); do echo -n "-i $KEY/$(printf '%03d' $a).mp3 "; done) \
+            -filter_complex "[0:a]$(for i in $(seq 1 $((END-START))); do echo -n "[$i:a]"; done)concat=n=$((END-START+1)):v=0:a=1[aout]" \
+            -map "[aout]" build/audio.mp3
+          # pick a random background
+          BG=$(ls assets/backgrounds/*.{jpg,jpeg,png,webp} 2>/dev/null | shuf -n1)
+          # get audio duration
+          DUR=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 build/audio.mp3)
+          # make a still video (bg image) of that duration, mux audio
+          ffmpeg -y -loop 1 -i "$BG" -i build/audio.mp3 \
+            -c:v libx264 -tune stillimage -pix_fmt yuv420p \
+            -c:a aac -b:a 128k -shortest -t "$DUR" \
+            build/video.mp4
+          echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
+
+      - name: Upload video as GitHub Release (public raw URL)
+        id: upload
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
+          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
+          TAG="vid-$(date +%s)"
+          gh release create "$TAG" build/video.mp4 --title "Auto video $KEY $START-$END" --notes "temp"
+          # raw public URL
+          VURL="https://github.com/${{ github.repository }}/releases/download/$TAG/video.mp4"
+          echo "video_url=$VURL" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "VIDEO_URL=$VURL" >> "$GITHUB_ENV"
+
+      - name: Send webhook (public raw video URL + metadata)
+        run: |
+          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
+          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
+          TAG="${{ steps.upload.outputs.tag }}"
+          curl -sS -X POST "https://flow.sokt.io/func/scriY8Zfajvd" \
+            -H "Content-Type: application/json" \
+            -d "{\"video_url\":\"$VIDEO_URL\",\"surah_name\":\"$NAME\",\"surah_num\":$KEY,\"from_ayah\":$START,\"to_ayah\":$END,\"tag\":\"$TAG\"}"
+          echo "webhook sent"
+
+      - name: Wait 5 min for automation to publish
+        run: sleep 300
+
+      - name: Delete temp release (cleanup)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.upload.outputs.tag }}"
+          gh release delete "$TAG" --yes || true
+          echo "release $TAG deleted"
