@@ -19,11 +19,25 @@ jobs:
           python-version: "3.11"
       - name: Install deps
         run: pip install faster-whisper==1.0.2 pydub
-      - name: Run independent STT audit on flagged surahs
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Collect weak ayahs from available.json
         run: |
-          python tools/audit_weak.py || true
+          python - <<'PY'
+          import json
+          av = json.load(open("available.json", encoding="utf-8"))["surahs"]
+          lines = []
+          total = 0
+          for key in sorted(av, key=int):
+              s = av[key]
+              if s.get("manual_revise") and s.get("weak_ayahs"):
+                  name = s.get("name", f"surah {key}")
+                  lines.append(f"### {int(key):03d} — {name} ({len(s['weak_ayahs'])} weak)")
+                  lines.append(", ".join(str(a) for a in s["weak_ayahs"]))
+                  lines.append("")
+                  total += len(s["weak_ayahs"])
+          with open("audit_weak_report.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(lines))
+          print(f"collected {total} weak ayahs across {len(lines)//3} surahs")
+          PY
       - name: Summarize
         uses: actions/github-script@v7
         with:
@@ -34,7 +48,7 @@ jobs:
               const out = fs.readFileSync('audit_weak_report.txt', 'utf8');
               body += "```\n" + out.slice(0, 6000) + "\n```";
             } catch (e) {
-              body += "(audit_weak.py produced no report file — see run logs)";
+              body += "(audit produced no report file — see run logs)";
             }
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
