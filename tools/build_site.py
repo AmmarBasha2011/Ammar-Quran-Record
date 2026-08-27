@@ -23,6 +23,18 @@ surahs = av.get("surahs", {})
 total = av.get("total_ayat", 0)
 total_s = len(surahs)
 
+# load ayah texts (for display under each player)
+try:
+    _idx = json.load(open("tools/quran_norm_index.json", encoding="utf-8"))
+    def ayah_text(key, a):
+        try:
+            return _idx[key]["texts"][a - 1]
+        except Exception:
+            return ""
+except Exception:
+    def ayah_text(key, a):
+        return ""
+
 cards = []
 for key in sorted(surahs, key=int):
     s = surahs[key]
@@ -33,10 +45,12 @@ for key in sorted(surahs, key=int):
     for a in range(1, n + 1):
         url = f"{raw}/{key}/{a:03d}.mp3"
         cls = " w" if a in weak else ""
+        txt = ayah_text(key, a)
+        txt_html = (f'<div class="a-txt">{txt}</div>' if txt else "")
         ayahs.append(
             f'<div class="ayah{cls}" id="a{key}-{a:03d}">'
             f'<span class="a-n">{a:03d}</span>'
-            f'<audio controls preload="none" src="{url}"></audio>'
+            f'<div class="a-body"><audio controls preload="none" src="{url}"></audio>{txt_html}</div>'
             f'</div>')
     wbadge = (f'<span class="badge-w">⚠ {len(weak)} weak</span>' if weak else
               '<span class="badge-ok">✓ clean</span>')
@@ -105,11 +119,15 @@ HEAD_CSS = """\
     border-radius:20px;padding:3px 10px;font-size:.8rem}
   .ayah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;
     padding:14px 18px 18px}
-  .ayah{display:flex;align-items:center;gap:10px;background:rgba(2,6,23,.55);
+  .ayah{display:flex;align-items:flex-start;gap:10px;background:rgba(2,6,23,.55);
     border:1px solid rgba(148,163,184,.18);border-radius:12px;padding:8px 12px}
   .ayah.w{border-color:rgba(234,179,8,.45)}
-  .a-n{font-family:Consolas,monospace;color:var(--accent);min-width:30px;font-weight:700}
-  .ayah audio{flex:1;height:34px}
+  .a-n{font-family:Consolas,monospace;color:var(--accent);min-width:30px;font-weight:700;padding-top:6px}
+  .a-body{flex:1;display:flex;flex-direction:column;gap:6px}
+  .ayah audio{width:100%;height:34px}
+  .a-txt{direction:rtl;text-align:right;font-size:.92rem;line-height:1.7;color:#e2e8f0;
+    background:rgba(15,23,42,.5);border-right:3px solid var(--accent);
+    padding:8px 12px;border-radius:8px}
   .empty{text-align:center;color:var(--muted);padding:40px;display:none}
   footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px;border-top:1px solid var(--card-brd)}
   footer a{color:var(--accent);text-decoration:none}
@@ -159,16 +177,25 @@ SCRIPT = """\
   function goAyah(){
     var h=location.hash.match(/^#a([0-9]{3})-([0-9]{3})$/);
     if(!h) return;
-    var card=document.querySelector('.surah[data-num="'+parseInt(h[1],10)+'"]');
+    var num=parseInt(h[1],10);
+    var card=document.querySelector('.surah[data-num="'+num+'"]');
     if(!card) return;
     card.open=true;
-    var el=document.getElementById('a'+h[1]+'-'+h[2]);
-    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'});
+    function focusAyah(){
+      var el=document.getElementById('a'+h[1]+'-'+h[2]);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth',block:'center'});
       el.style.outline='3px solid #A855F7';
-      setTimeout(function(){ var a=el.querySelector('audio'); if(a) a.play().catch(function(){}); },600);
+      var a=el.querySelector('audio');
+      if(a) a.play().catch(function(){});
     }
+    // wait a tick for the <details> content to render, then focus + play
+    setTimeout(focusAyah, 300);
+    setTimeout(focusAyah, 900);
   }
-  window.addEventListener('hashchange',goAyah); goAyah();
+  window.addEventListener('hashchange',goAyah);
+  window.addEventListener('load',goAyah);
+  document.addEventListener('DOMContentLoaded',goAyah);
 </script>
 </body>
 </html>
