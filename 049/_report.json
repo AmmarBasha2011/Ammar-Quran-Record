@@ -1,0 +1,141 @@
+{
+ "surah": "049",
+ "name": "الحجرات",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\049\\049_source.mp3",
+ "ayahs_expected": 18,
+ "ayahs_found": 18,
+ "complete": true,
+ "weak": [
+  2,
+  12,
+  17
+ ],
+ "items": [
+  {
+   "ayah": 1,
+   "file": "001.mp3",
+   "start": 13.96,
+   "end": 38.3,
+   "sim": 0.952
+  },
+  {
+   "ayah": 2,
+   "file": "002.mp3",
+   "start": 38.3,
+   "end": 58.14,
+   "sim": 0.677
+  },
+  {
+   "ayah": 3,
+   "file": "003.mp3",
+   "start": 58.14,
+   "end": 81.06,
+   "sim": 0.981
+  },
+  {
+   "ayah": 4,
+   "file": "004.mp3",
+   "start": 81.06,
+   "end": 101.62,
+   "sim": 0.982
+  },
+  {
+   "ayah": 5,
+   "file": "005.mp3",
+   "start": 101.62,
+   "end": 115.74,
+   "sim": 0.996
+  },
+  {
+   "ayah": 6,
+   "file": "006.mp3",
+   "start": 115.74,
+   "end": 151.46,
+   "sim": 0.914
+  },
+  {
+   "ayah": 7,
+   "file": "007.mp3",
+   "start": 151.46,
+   "end": 188.66,
+   "sim": 0.978
+  },
+  {
+   "ayah": 8,
+   "file": "008.mp3",
+   "start": 188.66,
+   "end": 203.95,
+   "sim": 0.852
+  },
+  {
+   "ayah": 9,
+   "file": "009.mp3",
+   "start": 203.95,
+   "end": 239.48,
+   "sim": 0.851
+  },
+  {
+   "ayah": 10,
+   "file": "010.mp3",
+   "start": 239.48,
+   "end": 257.37,
+   "sim": 0.946
+  },
+  {
+   "ayah": 11,
+   "file": "011.mp3",
+   "start": 257.37,
+   "end": 313.25,
+   "sim": 0.874
+  },
+  {
+   "ayah": 12,
+   "file": "012.mp3",
+   "start": 313.25,
+   "end": 352.59,
+   "sim": 0.639
+  },
+  {
+   "ayah": 13,
+   "file": "013.mp3",
+   "start": 352.59,
+   "end": 381.69,
+   "sim": 0.944
+  },
+  {
+   "ayah": 14,
+   "file": "014.mp3",
+   "start": 381.69,
+   "end": 413.98,
+   "sim": 0.939
+  },
+  {
+   "ayah": 15,
+   "file": "015.mp3",
+   "start": 413.98,
+   "end": 439.41,
+   "sim": 0.962
+  },
+  {
+   "ayah": 16,
+   "file": "016.mp3",
+   "start": 439.41,
+   "end": 462.64,
+   "sim": 0.994
+  },
+  {
+   "ayah": 17,
+   "file": "017.mp3",
+   "start": 462.64,
+   "end": 476.43,
+   "sim": 0.728
+  },
+  {
+   "ayah": 18,
+   "file": "018.mp3",
+   "start": 476.43,
+   "end": 490.14,
+   "sim": 0.952
+  }
+ ]
+}
