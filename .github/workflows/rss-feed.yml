@@ -1,0 +1,67 @@
+name: RSS Feed
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate RSS feed
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import os, json, datetime
+          REPO = "."
+          av = json.load(open("available.json", encoding="utf-8"))
+          links = json.load(open("links.json", encoding="utf-8")).get("links", {})
+          repo = os.environ.get("GITHUB_REPOSITORY", "AmmarBasha2011/Ammar-Quran-Record")
+          raw = f"https://raw.githubusercontent.com/{repo}/main"
+          now = datetime.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+          items = []
+          for key in sorted(av["surahs"], key=int):
+              s = av["surahs"][key]
+              name = links.get(key, {}).get("name", "?")
+              n = s.get("ayahs", 0)
+              url = f"{raw}/{key}/001.mp3"
+              items.append(
+                  f'    <item>\n'
+                  f'      <title>سورة {name} ({key})</title>\n'
+                  f'      <link>{url}</link>\n'
+                  f'      <guid isPermaLink="false">{repo}/{key}</guid>\n'
+                  f'      <description>{n} آية بصوت عمار الخطيب</description>\n'
+                  f'      <pubDate>{now}</pubDate>\n'
+                  f'    </item>')
+          feed = (
+              '<?xml version="1.0" encoding="UTF-8"?>\n'
+              '<rss version="2.0">\n<channel>\n'
+              f'  <title>تلاوات عمار الخطيب</title>\n'
+              f'  <link>https://github.com/{repo}</link>\n'
+              f'  <description>تلاوات القرآن بصوت عمار الخطيب، مقسّمة آية آية</description>\n'
+              f'  <language>ar</language>\n'
+              f'  <lastBuildDate>{now}</lastBuildDate>\n'
+              + "\n".join(items) +
+              '\n</channel>\n</rss>\n')
+          os.makedirs("feed", exist_ok=True)
+          open("feed/quran.xml", "w", encoding="utf-8").write(feed)
+          print(f"Wrote feed/quran.xml with {len(av['surahs'])} items")
+          PY
+      - name: Commit feed (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add feed/quran.xml
+          git diff --cached --quiet || git commit -m "chore: regenerate RSS feed"
+          git push || echo "no changes"

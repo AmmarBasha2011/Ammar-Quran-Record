@@ -155,8 +155,15 @@ python tools/add_surah.py 044
 | `pr-check.yml` | عند فتح PR | يمنع الدمج لو الـ validate فشل + يعلّق النتيجة |
 | `audio-probe.yml` | كل commit | يتأكد إن كل MP3 صحيح ومش فاضي |
 | `available-json-drift.yml` | كل commit | يكشف اختلاف بين available.json والملفات على القرص |
+| `pages-site.yml` | كل commit | يبني موقع HTML فيه مشغّل صوت لكل آية وينشره على GitHub Pages |
+| `rss-feed.yml` | كل commit | يولّد RSS podcast feed من الأرشيف |
+| `dedup-check.yml` | كل commit | يتأكد إن مفيش ملفين MP3 متطابقين |
+| `silence-check.yml` | كل commit | يتأكد إن كل آية فيها صوت فعلاً (مش صامتة/فاضية) |
+| `stale-issue.yml` | أسبوعياً | يقفل Issues الآيات الضعيفة لو اتصلحت وبقت stale |
 
-كل workflow بيفتح **Issue موسوم** لو لقى مشكلة، عشان يتم مراجعتها وإصلاحها.
+**الاستماع المباشر:** الموقع المنشور على GitHub Pages وفيه مشغّل صوت لكل آية، وكمان **RSS feed** للبودكاست.
+
+---
 
 ---
 

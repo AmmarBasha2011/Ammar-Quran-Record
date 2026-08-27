@@ -1,0 +1,25 @@
+name: Stale Issues
+
+on:
+  schedule:
+    - cron: "41 4 * * 1"   # weekly, Mon 04:41 UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          # close weak-ayahs / audit issues older than 30 days with no activity
+          stale-issue-message: "This weak-ayah / audit report is stale (30+ days no activity). If still relevant, comment to keep it open."
+          stale-issue-label: "stale"
+          days-before-stale: 30
+          days-before-close: 7
+          only-labels: "weak-ayahs,nightly-audit"
+          exempt-labels: "auto-fix-needed,pinned"
+          exempt-all-milestones: true

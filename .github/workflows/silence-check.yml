@@ -1,0 +1,70 @@
+name: Silence Check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  silence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python + ffmpeg
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install pydub
+      - name: Detect silent / near-silent ayahs
+        run: |
+          python - <<'PY'
+          import os, json, sys
+          from pydub import AudioSegment
+
+          REPO = "."
+          av = json.load(open("available.json", encoding="utf-8"))
+          silent = []
+          checked = 0
+          for key in sorted(av["surahs"], key=int):
+              dp = os.path.join(REPO, key)
+              n = av["surahs"][key].get("ayahs", 0)
+              for a in range(1, n + 1):
+                  f = os.path.join(dp, f"{a:03d}.mp3")
+                  if not os.path.exists(f): continue
+                  checked += 1
+                  try:
+                      seg = AudioSegment.from_file(f)
+                      if len(seg) < 300:            # under 0.3s = suspicious
+                          silent.append(f"{key}/{a:03d}: too short ({len(seg)}ms)")
+                          continue
+                      # dBFS near -inf or below -50 means effectively silent
+                      if seg.dBFS < -50:
+                          silent.append(f"{key}/{a:03d}: silent (dBFS={seg.dBFS:.1f})")
+                  except Exception as e:
+                      silent.append(f"{key}/{a:03d}: unreadable ({e})")
+          if silent:
+              print(f"SILENT/INVALID FOUND ({len(silent)} of {checked}):")
+              for s in silent[:50]: print("  -", s)
+              open("silence.txt", "w").write("\n".join(silent))
+              sys.exit(1)
+          print(f"OK: {checked} files, none silent")
+          PY
+      - name: Open issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('silence.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: "🔇 Silent or invalid ayah files detected",
+              body: "These ayahs appear silent or corrupt:\n\n```\n" + body + "\n```\n\nPlease recut them.",
+              labels: ['silence', 'auto-fix-needed']
+            });

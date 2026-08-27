@@ -1,0 +1,61 @@
+name: Dedup Check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  dedup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Detect duplicate MP3 files
+        run: |
+          python - <<'PY'
+          import os, json, hashlib, sys
+
+          REPO = "."
+          av = json.load(open("available.json", encoding="utf-8"))
+          seen = {}      # hash -> (surah, ayah)
+          dups = []
+          checked = 0
+          for key in sorted(av["surahs"], key=int):
+              dp = os.path.join(REPO, key)
+              if not os.path.isdir(dp): continue
+              for f in os.listdir(dp):
+                  if not f.endswith(".mp3") or len(f) != 7: continue
+                  p = os.path.join(dp, f)
+                  h = hashlib.md5(open(p, "rb").read()).hexdigest()
+                  checked += 1
+                  if h in seen:
+                      dups.append(f"{key}/{f} == {seen[h][0]}/{seen[h][1]}")
+                  else:
+                      seen[h] = (key, f)
+          if dups:
+              print(f"DUPLICATES FOUND ({len(dups)} of {checked}):")
+              for d in dups[:50]: print("  -", d)
+              open("dedup.txt", "w").write("\n".join(dups))
+              sys.exit(1)
+          print(f"OK: {checked} files, no duplicates")
+          PY
+      - name: Open issue on dup
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('dedup.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: "🔁 Duplicate audio files detected",
+              body: "These files appear to be byte-identical:\n\n```\n" + body + "\n```\n\nPlease recut the duplicated ayah.",
+              labels: ['dedup', 'auto-fix-needed']
+            });
