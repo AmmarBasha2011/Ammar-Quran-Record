@@ -6,7 +6,6 @@
  "ayahs_found": 38,
  "complete": true,
  "weak": [
-  1,
   4,
   19,
   34
@@ -15,9 +14,9 @@
   {
    "ayah": 1,
    "file": "001.mp3",
-   "start": 1.9,
+   "start": 11.03,
    "end": 18.47,
-   "sim": 0.141
+   "sim": 0.994
   },
   {
    "ayah": 2,
