@@ -64,7 +64,10 @@ def main():
             det = yt.videos().list(
                 part="statistics,snippet,contentDetails", id=",".join(ids)).execute()
             for v in det["items"]:
-                mins = parse_duration(v["contentDetails"]["duration"])
+                cd = v.get("contentDetails", {})
+                if "duration" not in cd:
+                    continue  # skip live/not-available
+                mins = parse_duration(cd["duration"])
                 if mins < 3:  # Short only
                     title = v["snippet"]["title"]
                     # try to parse "سورة X (KEY) - الآية A-B" from our titles
