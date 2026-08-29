@@ -1,76 +1,147 @@
-# 🛠️ أدوات التقطيع (tools/)
+# 🛠️ Tools — Ammar Quran Record
 
-هذا المجلد يحتوي على الأدوات المستخدمة لإنشاء ملفات التلاوة المقطّعة آية آية في هذا المستودع.
+مجموعة الأدوات اللي بتشغّل أتمتة التلاوات: التقطيع، النشر، رفع YouTube، والإحصائيات.
 
 ---
 
-## 📦 الملفات
+## 📑 الفهرس
 
-| الملف | الوظيفة |
+| الأداة | الوظيفة | يُشغَّل |
+|---|---|---|
+| `quran_split.py` | تقطيع سورة لآيات (whisper + forced alignment) | محلياً |
+| `add_surah.py` | نشر سورة في الـ repo + تحديث available.json | محلياً |
+| `recut_ayahs.py` | إعادة تقطيع آيات معيّنة | محلياً |
+| `rebuild_available.py` | إعادة بناء available.json من الـ reports | محلياً |
+| `get_youtube_token.py` | OAuth one-time لجلب refresh_token | محلياً (مرة واحدة) |
+| `upload_youtube.py` | رفع Short مباشرة على YouTube | CI (video-autopost) |
+| `youtube_stats.py` | قراءة إحصائيات القناة + مقارنة Shorts/Long | محلياً / CI |
+
+---
+
+## 🔪 1. quran_split.py — التقطيع
+
+يقطّع ملف صوت سورة كاملة لآيات منفصلة باستخدام faster-whisper + forced alignment.
+
+```bash
+python tools/quran_split.py PATH_TO_AUDIO.mp3 044 OUTPUT_DIR --beam 5
+```
+
+**المعاملات:**
+- `PATH_TO_AUDIO.mp3` — ملف السورة الكاملة
+- `044` — رقم السورة (3 خانات)
+- `OUTPUT_DIR` — مجلد الإخراج (مثلاً `cut_one/044/`)
+- `--beam 5` — جودة المحاذاة (أعلى = أدق وأبطأ)
+
+**المخرجات:**
+- `OUTPUT_DIR/001.mp3`, `002.mp3`, ... — الآيات
+- `OUTPUT_DIR/_report.json` — تقرير الجودة (sim/weak_ayahs)
+
+**ملاحظة:** الأداة بتفصل الاستعاذة/البسملة عن الآية 1 تلقائياً قبل الـ alignment.
+
+---
+
+## 📤 2. add_surah.py — النشر
+
+ينسخ ملفات السورة + `_report.json` للـ repo ويحدّث `available.json`.
+
+```bash
+python tools/add_surah.py 044
+```
+
+---
+
+## ✂️ 3. recut_ayahs.py — إعادة التقطيع
+
+يُعيد تقطيع آيات معيّنة من سورة (بعد تصحيح أو مراجعة).
+
+```bash
+python tools/recut_ayahs.py 103 1 3   # أعد تقطيع آيات 1-3 من سورة 103
+```
+
+---
+
+## 🔄 4. rebuild_available.py — إعادة بناء available.json
+
+يقرأ كل `_report.json` ويبني `available.json` بالمقاييس الصحيحة.
+
+```bash
+python tools/rebuild_available.py
+```
+
+> **ملاحظة:** السكربت ده محلي (مش مرفوع في CI) — لو احتجت إعادة بناء متزامنة استخدم الـ Python one-liner في الـ terminal.
+
+---
+
+## 🔑 5. get_youtube_token.py — OAuth (مرة واحدة)
+
+يطلب موافقة YouTube ويعطيك `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`.
+
+```bash
+pip install google-auth-oauthlib google-auth
+python tools/get_youtube_token.py
+```
+
+**الصلاحيات المطلوبة:**
+- `https://www.googleapis.com/auth/youtube.upload`
+- `https://www.googleapis.com/auth/youtube.readonly`
+
+> ⚠️ `ytanalytics.readonly` **مرفوض** لـ OAuth client عادي (بيحتاج Content Owner). استخدم `youtube.readonly` بدلاً منه.
+
+**الـ redirect URI:** لازم تضيف `http://localhost:8899/` في Google Cloud Console → OAuth client.
+
+---
+
+## 📹 6. upload_youtube.py — الرفع المباشر
+
+يرفع Short على YouTube عبر OAuth (refresh_token من Secrets).
+
+```bash
+python tools/upload_youtube.py KEY NAME START END
+# مثال: python tools/upload_youtube.py 024 النور 1 3
+```
+
+يقرأ من البيئة: `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`.
+
+---
+
+## 📊 7. youtube_stats.py — الإحصائيات
+
+يقرأ إحصائيات القناة ويقارن Shorts vs Long-form.
+
+```bash
+python tools/youtube_stats.py
+```
+
+**المخرجات:**
+- عدد المشتركين / المشاهدات / الفيديوهات
+- متوسط المشاهدات والـ likes لـ Shorts vs Long-form
+- Top 5 Shorts و Top 5 Long-form
+
+---
+
+## 🔐 أسرار GitHub (Secrets)
+
+الـ workflow `video-autopost.yml` بيقرأ من GitHub Secrets:
+
+| السر | الوظيفة |
 |---|---|
-| **`quran_split.py`** | الأداة الرئيسية — تقطّع تسجيل سورة كاملة إلى ملفات `NNN.mp3` لكل آية |
-| **`verify_repo.py`** | تدقيق مستقل (STT) لكل الملفات المنشورة ومقارنتها بالنص الرسمي |
-| **`process_parallel.py`** | خط أنابيب متوازي لتقطيع عدة سور دفعة واحدة |
-| **`arabic_norm.py`** | دوال تطبيع النص العربي ومقارنة التشابه |
-| **`quran_norm_index.json`** | النص القرآني الرسمي (مفهرس لكل سورة وآية) — أساس المقارنة |
-| **`quran_text.json`** | نص القرآن الكامل |
-| **`surah_meta.json`** | بيانات السور (الأسماء، عدد الآيات) |
-| **`manifest.json`** | مانيفست للعمليات السابقة |
-| **`test_ch1.json`** | ملف اختبار |
+| `YT_CLIENT_ID` | معرّف OAuth client |
+| `YT_CLIENT_SECRET` | سر OAuth client |
+| `YT_REFRESH_TOKEN` | توكن التحديث (بيفضل صالح للأبد — يتحط مرة واحدة) |
+
+> ⚠️ **لا ترفع الأسرار في الكود** — استخدم GitHub Secrets فقط.
 
 ---
 
-## ⚙️ كيف يعمل `quran_split.py`
-
-الأداة تتبع هذه الخطوات:
-
-1. **التفريغ (Transcription):** تستخدم `faster-whisper` مع موديل متدرّب على القرآن (tarteel) لإنتاج نص محدد بالزمن (word-level timestamps).
-2. **المحاذاة (Alignment):** تتم مطابقة الكلمات المُفرّغة مع النص الرسمي للآية باستخدام `arabic_norm` (تطبيع عربي + SequenceMatcher بنافذة منزلقة).
-3. **التقطيع (Cutting):** يُقطع الصوت عند حدود كل آية → `surah_folder/NNN.mp3`.
-4. **التقرير:** تحقق من تطابق العدد + نسبة التشابه النصي لكل آية.
-
----
-
-## 🚀 التشغيل
+## 📦 المتطلبات
 
 ```bash
-# تقطيع سورة كاملة من ملف صوتي محلي
-python tools/quran_split.py PATH_TO_AUDIO.mp3 <SURAH_NUMBER> <OUTPUT_DIR> [--beam N]
-
-# مثال: سورة الدخان (044)
-python tools/quran_split.py my_audio.mp3 044 ./output --beam 5
+pip install faster-whisper google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+# + ffmpeg (للنظام)
 ```
-
-المعاملات:
-- `audio_file` : مسار ملف الصوت (mp3/wav/webm)
-- `surah_number` : رقم السورة (1-114)
-- `out_dir` : مجلد الحفظ (يُنشأ تلقائياً)
-- `--beam N` : جودة التفريغ (افتراضي 5؛ استخدم 1 للسرعة)
-
----
-
-## 📋 المتطلبات
-
-```bash
-pip install faster-whisper yt-dlp pydub
-```
-
-**موديلات ضرورية** (توضع في مجلد `models/` خارج `tools/`):
-- `whisper-small-ct2` (CPU int8 — أعلى دقة للعربية)
-- `whisper-base-ar-quran-ct2` (للتدقيق المستقل في `verify_repo.py`)
-
-> الأداة تشير للمسارات **نسبياً** (relative) فتعمل على أي جهاز دون تعديل المسارات.
-
----
-
-## ✅ جودة البيانات
-
-- كل آية مقطوعة عند **حدود الكلام الفعلية** (ليست قصاً عشوائياً)
-- تمت مراجعة وتصحيح آيات كانت مقطوعة/خاطئة (مثل 078/007 و8 آيات أخرى في 2026-08-26)
-- الملفات بصيغة MP3 128kbps جاهزة للبث المباشر
 
 ---
 
 <div align="center">
-<sub>جزء من مشروع INEX / تلاوات عمار الخطيب</sub>
+<sub>INEX Team • 2026</sub>
 </div>
