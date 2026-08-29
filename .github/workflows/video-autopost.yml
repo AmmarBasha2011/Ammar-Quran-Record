@@ -41,8 +41,8 @@ jobs:
           keys = sorted(av, key=int)
           key = random.choice(keys)
           n = av[key]["ayahs"]
-          # SHORTS: 1-3 ayahs (YouTube Shorts max = 3 min / 180s; best 15-45s)
-          span = random.randint(1, min(3, n))
+          # SHORTS: 1-6 ayahs (YouTube Shorts max = 3 min / 180s; cap 175s in ffmpeg)
+          span = random.randint(1, min(6, n))
           start = random.randint(1, n - span + 1)
           end = start + span - 1
           name = links.get(key, {}).get("name", f"surah-{key}")

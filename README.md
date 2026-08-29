@@ -172,7 +172,7 @@ python tools/add_surah.py 044
 
 الـ workflow `video-autopost.yml` بينشئ **YouTube Short عمودي (9:16) تلقائياً كل 30 دقيقة** ويصدره على YouTube:
 
-1. يختار **سورة عشوائية** + **1–3 آيات** (YouTube Shorts حديثاً حتى 3 دقايق / 180s، والأفضل 15–45s عشان الأداء) من الأرشيف
+1. يختار **سورة عشوائية** + **1–6 آيات** (YouTube Shorts حديثاً حتى 3 دقايق / 180s، والأفضل 15–45s عشان الأداء) من الأرشيف
 2. يركّب فيديو عمودي 1080x1920: الصوت من ملفات الـ MP3 + خلفية من `assets/backgrounds/` (منقولة من QuranVideoGeneratorAPI)
 3. يرفع الفيديو على **GitHub Pages** (رابط عام raw مباشر)
 4. يبعت **webhook** لـ `https://flow.sokt.io/func/scriY8Zfajvd` فيه:
