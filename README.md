@@ -156,10 +156,8 @@ python tools/add_surah.py 044
 | `video-autopost.yml` | كل 4 ساعات | يختار سورة+آيات عشوائية، يبني YouTube Short عمودي (9:16)، **يرفعه مباشرة على YouTube** (من غير وسيط) |
 | `video-reupload.yml` | مرة يومياً (18:15 UTC) | يختار **أعلى Short من حيث المشاهدات** من القناة، يعيد بناءه، ويرفعه تاني عشان يفضل الـ reach عالي |
 
-> **ملاحظة:** `nightly-audit.yml` تم **إلغاؤه** (Issue #5) لأن `weak-report.yml` بيعمل نفس الشغل وأحسن (بروابط استماع مباشرة).
-
 **الاستماع المباشر:**
-- 🌐 **الموقع:** https://ammarbasha2011.github.io/Ammar-Quran-Record/ — فيه مشغّل صوت لكل آية (يُبنى تلقائياً عبر `pages-site.yml`) + بحث فوري + deep-link `#a{NNN}-{NNN}`
+- 🌐 **الموقع:** https://ammarbasha2011.github.io/Ammar-Quran-Record/ — فيه مشغّل صوت لكل آية (يُبنى تلقائياً عبر `pages-site.yml`) + بحث فوري
 - 📻 **RSS Podcast feed:** `feed/quran.xml` — يتحدّث تلقائياً عبر `rss-feed.yml` (يفتح في أي تطبيق بودكاست)
 
 ---
@@ -178,28 +176,6 @@ python tools/add_surah.py 044
 1. `tools/pick_best.py` يقرأ القناة، يجمع أعلى 10 Shorts بالمشاهدات، ويختار واحد عشوائي
 2. يعيد بناء الفيديو من نفس الـ MP3 في الـ repo
 3. يرفعه تاني على YouTube (عنوان/وصف جديد — YouTube بيسمح بإعادة نشر محتوى قديم)
-
-### لماذا رفع مباشرة بدل sokt.io؟
-- سوكت.آيو رجع **HTTP 402 (usage limit exhausted)** — الـ plan خلص
-- الرفع المباشر **أرخص وأضمن** (مفيش وسيط تالت)، وصلاحية `youtube.upload` + `youtube.readonly` في نفس التوكن
-
-### حدود YouTube Data API v3 (2026):
-- **Video Uploads per day**: 100 (الـ quota 10,000 units ← كل رفع = 1600 unit ← ~6 فيديو/يوم آمن)
-- توزيعنا: autopost كل 4 ساعات (6/يوم) + reupload مرة يوم (1/يوم) = **7/يوم ≈ 11,200 units** ← *فوق الحد قليلاً*
-- ⚠️ **ملاحظة:** لو ظهر quota exceeded، نقلّل autopost لكل 6 ساعات (4/يوم) = 5+1 = 6/يوم ≈ 9,600 units (آمن)
-
----
-
-## 📊 إحصائيات القناة (من YouTube Data API)
-
-أداة `tools/youtube_stats.py` تقرأ إحصائيات القناة وتقارن Shorts vs Long-form:
-
-| النوع | العدد | متوسط المشاهدات | متوسط الـ likes |
-|---|---|---|---|
-| **Shorts** | 4,165 | **68** | **5** |
-| **Long-form** | 221 | 31 | 1 |
-
-✅ **الـ Shorts بتعمل أحسن بكتير** (2.2× مشاهدات، 5× likes) — لذلك التركيز عليها هو القرار الصح.
 
 ---
 
