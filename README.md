@@ -149,6 +149,7 @@ python tools/add_surah.py 044
 | `silence-check.yml` | كل commit | يتأكد إن كل آية فيها صوت فعلاً (مش صامتة/فاضية) |
 | `stale-issue.yml` | أسبوعياً | يقفل Issues الآيات الضعيفة لو اتصلحت وبقت stale |
 | `video-autopost.yml` | كل 4 ساعات | يختار سورة+آيات عشوائية، يبني YouTube Short عمودي (9:16)، **يرفعه مباشرة على YouTube** (من غير وسيط) |
+| `video-reupload.yml` | كل 12 ساعة | يختار **أعلى Short من حيث المشاهدات** من القناة، يعيد بناءه، ويرفعه تاني عشان يفضل الـ reach عالي (quota منفصل) |
 
 > **ملاحظة:** `nightly-audit.yml` تم **إلغاؤه** (Issue #5) لأن `weak-report.yml` بيعمل نفس الشغل وأحسن (بروابط استماع مباشرة).
 
@@ -203,6 +204,18 @@ python tools/add_surah.py 044
 | `youtube_stats.py` | قراءة إحصائيات القناة + مقارنة Shorts/Long |
 
 للتفاصيل الكاملة راجع **[`tools/README.md`](tools/README.md)**.
+
+---
+
+## 💡 أفكار أتمتة مقترحة (مستقبلية)
+
+| الفكرة | الفايدة | الحالة |
+|---|---|---|
+| **Auto-rerecord weak ayahs** | الـ weak-report بيورّي الآيات الضعيفة؛ workflow يعيد تقطيعها تلقائياً من المصدر ويستبدلها | مقترح |
+| **Daily WhatsApp stats** | كل يوم يبعت ملخص أداء القناة (مشاهدات جديدة، أفضل Short) على واتساب عمار | مقترح |
+| **Auto SEO metadata** | يحسّن عنوان/وصف/هاشتاجات كل Short أوتوماتيك (مثلاً "سورة الأعلى \| الآيات 1-3 \| تلاوة عمار الخطيب 🎧") | مقترح |
+| **Quota guard** | يراقب استهلاك YouTube quota وينبه لو اقترب من 10,000 units قبل ما يفشل | مقترح |
+| **Re-upload best performers** | ✅ منفّذ (`video-reupload.yml`) — يعيد رفع أعلى Shorts عشان الـ reach يفضل عالي | ✅ شغّال |
 
 ---
 

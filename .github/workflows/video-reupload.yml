@@ -1,0 +1,72 @@
+name: Video Re-upload (best performers -> YouTube Short)
+
+# Re-uploads a previously high-performing Short to keep reach high.
+# Picks a top-viewed Short from the channel, rebuilds it from repo audio,
+# and re-posts it. Runs every 12h (separate quota budget from video-autopost).
+
+on:
+  schedule:
+    - cron: "30 */12 * * *"   # every 12 hours (offset from autopost)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reupload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ffmpeg + youtube libs
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install --quiet google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+      - name: Pick a top-performing past Short
+        id: pick
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python tools/pick_best.py
+
+      - name: Build video with ffmpeg
+        if: success()
+        run: |
+          if [ ! -s pick.txt ]; then echo "nothing to re-upload"; exit 0; fi
+          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
+          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
+          mkdir -p build
+          ffmpeg -y $(for a in $(seq $START $END); do echo -n "-i $KEY/$(printf '%03d' $a).mp3 "; done) \
+            -filter_complex "[0:a]$(for i in $(seq 1 $((END-START))); do echo -n "[$i:a]"; done)concat=n=$((END-START+1)):v=0:a=1[aout]" \
+            -map "[aout]" build/audio.mp3
+          RAWBG=$(ls assets/backgrounds/*.{jpg,jpeg,png,webp} 2>/dev/null | shuf -n1)
+          EXT="${RAWBG##*.}"
+          if [ "$EXT" = "webp" ]; then BG="build/bg.png"; ffmpeg -y -i "$RAWBG" "$BG"; else BG="$RAWBG"; fi
+          DUR=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 build/audio.mp3)
+          ffmpeg -y -loop 1 -i "$BG" -i build/audio.mp3 \
+            -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2" \
+            -c:v libx264 -tune stillimage -pix_fmt yuv420p -r 25 \
+            -c:a aac -b:a 128k -shortest -t "$DUR" -t 175 \
+            build/video.mp4
+          echo "rebuilt video for surah $KEY ayahs $START-$END"
+
+      - name: Upload Short directly to YouTube
+        if: success()
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          if [ ! -s pick.txt ]; then echo "skipped (no pick)"; exit 0; fi
+          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
+          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
+          python tools/upload_youtube.py "$KEY" "$NAME" "$START" "$END"
