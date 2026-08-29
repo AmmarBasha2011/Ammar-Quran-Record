@@ -1,7 +1,7 @@
 {
  "surah": "103",
  "name": "العصر",
- "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\103\\103_source.mp3",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\103\\103_source.mp3",
  "ayahs_expected": 3,
  "ayahs_found": 3,
  "complete": true,
@@ -28,7 +28,7 @@
    "file": "003.mp3",
    "start": 14.37,
    "end": 22.72,
-   "sim": 0.924
+   "sim": 0.946
   }
  ]
 }

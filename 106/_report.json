@@ -1,7 +1,7 @@
 {
  "surah": "106",
  "name": "قريش",
- "source": "C:\\Users\\T.B\\Quran_Master\\cut_old\\106\\106_source.mp3",
+ "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\106\\106_source.mp3",
  "ayahs_expected": 4,
  "ayahs_found": 4,
  "complete": true,
@@ -26,7 +26,7 @@
   {
    "ayah": 3,
    "file": "003.mp3",
-   "start": 23.06,
+   "start": 23.05,
    "end": 27.05,
    "sim": 0.992
   },
@@ -35,7 +35,7 @@
    "file": "004.mp3",
    "start": 27.05,
    "end": 36.02,
-   "sim": 0.925
+   "sim": 0.907
   }
  ]
 }
