@@ -5,14 +5,16 @@
   "ayahs_expected": 4,
   "ayahs_found": 4,
   "complete": true,
-  "weak": [],
+  "weak": [
+    1
+  ],
   "items": [
     {
       "ayah": 1,
       "file": "001.mp3",
       "start": 0.0,
       "end": 13.27,
-      "sim": 1.0
+      "sim": 0.22
     },
     {
       "ayah": 2,
