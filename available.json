@@ -2990,7 +2990,8 @@
       "min_sim": 0.4,
       "avg_sim": 0.735,
       "weak_ayahs": [],
-      "manual_revise": false
+      "manual_revise": false,
+      "complete": true
     },
     "104": {
       "ayahs": 9,
@@ -3035,7 +3036,8 @@
       "min_sim": 0.22,
       "avg_sim": 0.743,
       "weak_ayahs": [],
-      "manual_revise": false
+      "manual_revise": false,
+      "complete": true
     },
     "107": {
       "ayahs": 7,

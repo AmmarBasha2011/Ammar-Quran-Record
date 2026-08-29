@@ -1,38 +1,39 @@
 {
   "surah": "106",
   "name": "قريش",
-  "source": "C:\\Users\\T.B\\Quran_Master\\cut_one\\106\\106_source.mp3",
+  "source": "C:/Users/T.B/Quran_Master/cut_one/106/106_source.mp3",
   "ayahs_expected": 4,
   "ayahs_found": 4,
   "complete": true,
+  "weak": [],
   "items": [
     {
       "ayah": 1,
       "file": "001.mp3",
-      "start": 2.14,
-      "end": 15.41,
+      "start": 0.0,
+      "end": 13.27,
       "sim": 1.0
     },
     {
       "ayah": 2,
       "file": "002.mp3",
-      "start": 15.41,
-      "end": 23.05,
-      "sim": 0.835
+      "start": 13.27,
+      "end": 20.91,
+      "sim": 1.0
     },
     {
       "ayah": 3,
       "file": "003.mp3",
-      "start": 23.05,
-      "end": 27.05,
-      "sim": 0.992
+      "start": 20.91,
+      "end": 24.91,
+      "sim": 1.0
     },
     {
       "ayah": 4,
       "file": "004.mp3",
-      "start": 27.05,
-      "end": 36.02,
-      "sim": 0.907
+      "start": 24.91,
+      "end": 33.88,
+      "sim": 1.0
     }
   ]
 }
