@@ -130,11 +130,22 @@ python tools/upload_youtube.py KEY NAME START END
 
 **العنوان/الوصف اللي بيتكتب:**
 ```
-العنوان: سورة {NAME} ({KEY}) - الآية {START}[-{END}]
-الوصف: تلاوة عمار الخطيب
-        سورة {NAME} ({KEY}) الآيات {START}-{END}
-        #Shorts #قرآن #تلاوة
-الوسوم: [قرآن, تلاوة, عمار_الخطيب, اسلام, Shorts]
+العنوان: 🎧 سورة {NAME} | الآيات {START}–{END} | تلاوة عمار الخطيب
+الوصف: تلاوة مباركة بصوت القارئ عمار الخطيب ✨
+        📖 سورة {NAME} ({KEY}) — الآيات {START}–{END}
+
+        🔊 استمع للآية مباشرة:
+        https://raw.githubusercontent.com/.../main/{KEY}/{START:03d}.mp3
+
+        📚 المكتبة الكاملة (76 سورة مقسّمة آية آية):
+        https://github.com/AmmarBasha2011/Ammar-Quran-Record
+
+        🌐 الموقع: https://ammarbasha2011.github.io/Ammar-Quran-Record/
+
+        🤲 اللهم اجعل القرآن ربيع قلوبنا. شاركه مع من تحب.
+
+        #قرآن #تلاوة #عمار_الخطيب #سورة_{NAME} #الآيات_{START}_{END} #اسلام #Shorts #قرآن_كريم
+الوسوم: [قرآن, تلاوة, عمار_الخطيب, اسلام, Shorts, سورة_{NAME}, قرآن_كريم, تلاوات]
 ```
 
 **المخرجات:**

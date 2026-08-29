@@ -45,13 +45,39 @@ def main():
     creds = get_credentials()
     youtube = build(API_SERVICE_NAME, API_VERSION, credentials=creds)
 
-    title = f"سورة {name} ({key}) - الآية {start}" + (f"-{end}" if end != start else "")
+    reciter = "عمار الخطيب"
+    channel = "INEX Team"
+
+    # Build ayah range label
+    if start == end:
+        ayah_label = f"الآية {start}"
+    else:
+        ayah_label = f"الآيات {start}–{end}"
+
+    # Title: attractive + keyword-rich (surah name first for search)
+    emoji = "🎧"
+    if start == end:
+        title = f"{emoji} سورة {name} | {ayah_label} | تلاوة {reciter}"
+    else:
+        title = f"{emoji} سورة {name} | {ayah_label} | تلاوة {reciter}"
+
+    # Description: rich, with direct listening link + hashtags
+    raw_url = f"https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{key}/{int(start):03d}.mp3"
     desc = (
-        f"تلاوة عمار الخطيب\n"
-        f"سورة {name} ({key}) الآيات {start}-{end}\n"
-        f"#Shorts #قرآن #تلاوة"
+        f"تلاوة مباركة بصوت القارئ {reciter} ✨\n"
+        f"📖 سورة {name} ({key}) — {ayah_label}\n\n"
+        f"🔊 استمع للآية مباشرة:\n{raw_url}\n\n"
+        f"📚 المكتبة الكاملة (76 سورة مقسّمة آية آية):\n"
+        f"https://github.com/AmmarBasha2011/Ammar-Quran-Record\n\n"
+        f"🌐 الموقع: https://ammarbasha2011.github.io/Ammar-Quran-Record/\n\n"
+        f"🤲 اللهم اجعل القرآن ربيع قلوبنا. شاركه مع من تحب.\n\n"
+        f"#قرآن #تلاوة #عمار_الخطيب #سورة_{name} "
+        f"#{ayah_label.replace('–', '_').replace(' ', '_')} #اسلام #Shorts #قرآن_كريم"
     )
-    tags = ["قرآن", "تلاوة", "عمار_الخطيب", "اسلام", "Shorts"]
+    tags = [
+        "قرآن", "تلاوة", "عمار_الخطيب", "اسلام", "Shorts",
+        f"سورة_{name}", "قرآن_كريم", "تلاوات",
+    ]
 
     body = {
         "snippet": {
