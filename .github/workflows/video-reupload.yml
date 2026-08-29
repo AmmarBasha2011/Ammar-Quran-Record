@@ -6,7 +6,7 @@ name: Video Re-upload (best performers -> YouTube Short)
 
 on:
   schedule:
-    - cron: "30 */12 * * *"   # every 12 hours (offset from autopost)
+    - cron: "15 18 * * *"   # once daily at 18:15 UTC
   workflow_dispatch:
 
 permissions:

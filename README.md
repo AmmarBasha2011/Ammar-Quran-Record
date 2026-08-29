@@ -132,8 +132,9 @@ python tools/add_surah.py 044
 
 ## 🤖 GitHub Actions (أتمتة الفحص + النشر)
 
-المستودع فيه **14 workflow** تعمل تلقائياً على كل commit / كل ليلة / كل 4 ساعات / عند فتح PR:
+المستودع فيه **14 workflow** تعمل تلقائياً على كل commit / كل ليلة / كل 4 ساعات / يومياً / عند فتح PR:
 
+### فحص الجودة (كل commit)
 | Workflow | متى يشتغل | بيعمل إيه |
 |---|---|---|
 | `validate.yml` | كل commit | يتأكد من وجود `_report.json` + تطابق available.json مع الملفات + كل المقاييس (total_ayat, min_sim, avg_sim, manual_revise) |
@@ -148,8 +149,12 @@ python tools/add_surah.py 044
 | `dedup-check.yml` | كل commit | يتأكد إن مفيش ملفين MP3 متطابقين |
 | `silence-check.yml` | كل commit | يتأكد إن كل آية فيها صوت فعلاً (مش صامتة/فاضية) |
 | `stale-issue.yml` | أسبوعياً | يقفل Issues الآيات الضعيفة لو اتصلحت وبقت stale |
+
+### نشر الفيديو (YouTube)
+| Workflow | متى يشتغل | بيعمل إيه |
+|---|---|---|
 | `video-autopost.yml` | كل 4 ساعات | يختار سورة+آيات عشوائية، يبني YouTube Short عمودي (9:16)، **يرفعه مباشرة على YouTube** (من غير وسيط) |
-| `video-reupload.yml` | كل 12 ساعة | يختار **أعلى Short من حيث المشاهدات** من القناة، يعيد بناءه، ويرفعه تاني عشان يفضل الـ reach عالي (quota منفصل) |
+| `video-reupload.yml` | مرة يومياً (18:15 UTC) | يختار **أعلى Short من حيث المشاهدات** من القناة، يعيد بناءه، ويرفعه تاني عشان يفضل الـ reach عالي |
 
 > **ملاحظة:** `nightly-audit.yml` تم **إلغاؤه** (Issue #5) لأن `weak-report.yml` بيعمل نفس الشغل وأحسن (بروابط استماع مباشرة).
 
@@ -161,12 +166,18 @@ python tools/add_surah.py 044
 
 ## 🎬 فيديو قرآني أوتوماتيكي (YouTube Shorts)
 
-الـ workflow `video-autopost.yml` بينشئ **YouTube Short عمودي (9:16) تلقائياً كل 4 ساعات** ويرفعه **مباشرة على YouTube** (من غير وسيط زي sokt.io):
-
+### video-autopost.yml (كل 4 ساعات)
+بينشئ **YouTube Short عمودي (9:16) تلقائياً** ويرفعه **مباشرة على YouTube** (من غير وسيط زي sokt.io):
 1. يختار **سورة عشوائية** + **1–6 آيات** (YouTube Shorts حديثاً حتى 3 دقايق / 180s؛ والـ workflow بيقفل عند 175s للأمان)
 2. يركّب فيديو عمودي 1080x1920: الصوت من ملفات الـ MP3 + خلفية من `assets/backgrounds/`
 3. يرفع الفيديو **مباشرة على YouTube** عبر `tools/upload_youtube.py` (OAuth باِس refresh_token مخزّن في GitHub Secrets)
 4. الفيديو بيتعامل كـ **Short** تلقائياً (لأنه عمودي وأقل من 3 دقايق)
+
+### video-reupload.yml (مرة يومياً)
+يعيد رفع **أعلى Short من حيث المشاهدات** عشان الـ reach يفضل عالي:
+1. `tools/pick_best.py` يقرأ القناة، يجمع أعلى 10 Shorts بالمشاهدات، ويختار واحد عشوائي
+2. يعيد بناء الفيديو من نفس الـ MP3 في الـ repo
+3. يرفعه تاني على YouTube (عنوان/وصف جديد — YouTube بيسمح بإعادة نشر محتوى قديم)
 
 ### لماذا رفع مباشرة بدل sokt.io؟
 - سوكت.آيو رجع **HTTP 402 (usage limit exhausted)** — الـ plan خلص
@@ -174,7 +185,8 @@ python tools/add_surah.py 044
 
 ### حدود YouTube Data API v3 (2026):
 - **Video Uploads per day**: 100 (الـ quota 10,000 units ← كل رفع = 1600 unit ← ~6 فيديو/يوم آمن)
-- لذلك الـ workflow مضبوط **كل 4 ساعات** (6 Shorts/يوم = 9600 units، تحت الحد)
+- توزيعنا: autopost كل 4 ساعات (6/يوم) + reupload مرة يوم (1/يوم) = **7/يوم ≈ 11,200 units** ← *فوق الحد قليلاً*
+- ⚠️ **ملاحظة:** لو ظهر quota exceeded، نقلّل autopost لكل 6 ساعات (4/يوم) = 5+1 = 6/يوم ≈ 9,600 units (آمن)
 
 ---
 
@@ -193,29 +205,18 @@ python tools/add_surah.py 044
 
 ## 🔧 أدوات `tools/` (تفصيل)
 
-| الأداة | الوظيفة |
-|---|---|
-| `quran_split.py` | تقطيع سورة لآيات (whisper + forced alignment) |
-| `add_surah.py` | نشر سورة في الـ repo + تحديث available.json |
-| `recut_ayahs.py` | إعادة تقطيع آيات معيّنة |
-| `rebuild_available.py` | (محلي) إعادة بناء available.json |
-| `get_youtube_token.py` | OAuth one-time عشان يجيب refresh_token |
-| `upload_youtube.py` | رفع Short مباشرة على YouTube |
-| `youtube_stats.py` | قراءة إحصائيات القناة + مقارنة Shorts/Long |
+| الأداة | الوظيفة | يُشغَّل |
+|---|---|---|
+| `quran_split.py` | تقطيع سورة لآيات (whisper + forced alignment) | محلياً |
+| `add_surah.py` | نشر سورة في الـ repo + تحديث available.json | محلياً |
+| `recut_ayahs.py` | إعادة تقطيع آيات معيّنة | محلياً |
+| `rebuild_available.py` | (محلي) إعادة بناء available.json من الـ reports | محلياً |
+| `get_youtube_token.py` | OAuth one-time عشان يجيب refresh_token | محلياً (مرة واحدة) |
+| `upload_youtube.py` | رفع Short مباشرة على YouTube | CI (video-autopost / video-reupload) |
+| `pick_best.py` | يختار أعلى Short من القناة لإعادة رفعه | CI (video-reupload) |
+| `youtube_stats.py` | قراءة إحصائيات القناة + مقارنة Shorts/Long | محلياً / CI |
 
 للتفاصيل الكاملة راجع **[`tools/README.md`](tools/README.md)**.
-
----
-
-## 💡 أفكار أتمتة مقترحة (مستقبلية)
-
-| الفكرة | الفايدة | الحالة |
-|---|---|---|
-| **Auto-rerecord weak ayahs** | الـ weak-report بيورّي الآيات الضعيفة؛ workflow يعيد تقطيعها تلقائياً من المصدر ويستبدلها | مقترح |
-| **Daily WhatsApp stats** | كل يوم يبعت ملخص أداء القناة (مشاهدات جديدة، أفضل Short) على واتساب عمار | مقترح |
-| **Auto SEO metadata** | يحسّن عنوان/وصف/هاشتاجات كل Short أوتوماتيك (مثلاً "سورة الأعلى \| الآيات 1-3 \| تلاوة عمار الخطيب 🎧") | مقترح |
-| **Quota guard** | يراقب استهلاك YouTube quota وينبه لو اقترب من 10,000 units قبل ما يفشل | مقترح |
-| **Re-upload best performers** | ✅ منفّذ (`video-reupload.yml`) — يعيد رفع أعلى Shorts عشان الـ reach يفضل عالي | ✅ شغّال |
 
 ---
 
