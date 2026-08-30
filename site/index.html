@@ -762,6 +762,18 @@
     }
   },true);
 
+  // ---- fill ALL embedded texts immediately on load (offline, instant) ----
+  function fillAllTexts(){
+    [].slice.call(list.querySelectorAll('.a-txt[data-load]')).forEach(function(box){
+      var ayahEl=box.closest('.ayah');
+      var surah=+ayahEl.closest('.surah').dataset.num;
+      fillText(surah,+ayahEl.dataset.ayah,ayahEl);
+    });
+  }
+  // run on load (text is embedded, so no network delay)
+  if(document.readyState!=='loading') fillAllTexts();
+  else document.addEventListener('DOMContentLoaded',fillAllTexts);
+
   // ---- deep link #024-001 -> auto select + scroll + play ----
   function goAyah(){
     var h=location.hash.match(/^#a([0-9]{3})-([0-9]{3})$/);
@@ -770,12 +782,18 @@
     var card=document.querySelector('.surah[data-num="'+num+'"]');
     if(!card) return;
     card.open=true;
+    // Programmatic open does NOT fire the 'toggle' event, so fill the surah
+    // texts explicitly (offline, so this is instant — no network needed).
+    [].slice.call(card.querySelectorAll('.a-txt[data-load]')).forEach(function(box){
+      var ayahEl=box.closest('.ayah');
+      fillText(num,+ayahEl.dataset.ayah,ayahEl);
+    });
     function focusAyah(tries){
       tries=tries||0;
       var el=document.getElementById('a'+h[1]+'-'+h[2]);
       if(!el){ if(tries<8) setTimeout(function(){focusAyah(tries+1);},200); return; }
-      var box=el.querySelector('.a-txt[data-load]');
-      if(box) fillText(num,aya,el);
+      // ensure this ayah's text is filled (in case it was added late)
+      if(el.querySelector('.a-txt[data-load]')) fillText(num,aya,el);
       el.classList.add('active');
       el.scrollIntoView({behavior:'smooth',block:'center'});
       var a=el.querySelector('audio');
