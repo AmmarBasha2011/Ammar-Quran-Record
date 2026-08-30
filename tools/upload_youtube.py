@@ -61,12 +61,31 @@ def main():
     else:
         title = f"{emoji} سورة {name} | {ayah_label} | تلاوة {reciter}"
 
-    # Description: rich, with direct listening link + hashtags
+    # Long-form (full surah) video — linked as "related" guidance in the Short.
+    # NOTE: YouTube Data API v3 has NO endpoint to set a Short's official
+    # "Related video". The supported, API-safe way to connect a Short to its
+    # long-form video is to surface the long-form URL prominently in the
+    # Short's description (and tags), so viewers can tap through. (Adding to a
+    # playlist would require the youtube.force-ssl scope, which this token lacks.)
+    long_url = ""
+    try:
+        _links = json.load(open("links.json", encoding="utf-8")).get("links", {})
+        long_url = _links.get(key, {}).get("url", "")
+    except Exception:
+        long_url = ""
+
+    # Description: rich, with direct listening link + the long-form video link
     raw_url = f"https://raw.githubusercontent.com/AmmarBasha2011/Ammar-Quran-Record/main/{key}/{int(start):03d}.mp3"
     desc = (
         f"تلاوة مباركة بصوت القارئ {reciter} ✨\n"
         f"📖 سورة {name} ({key}) — {ayah_label}\n\n"
         f"🔊 استمع للآية مباشرة:\n{raw_url}\n\n"
+    )
+    if long_url:
+        desc += (
+            f"🎬 التلاوة الكاملة لسورة {name} (فيديو طويل):\n{long_url}\n\n"
+        )
+    desc += (
         f"📚 المكتبة الكاملة (76 سورة مقسّمة آية آية):\n"
         f"https://github.com/AmmarBasha2011/Ammar-Quran-Record\n\n"
         f"🌐 الموقع: https://ammarbasha2011.github.io/Ammar-Quran-Record/\n\n"
@@ -78,6 +97,13 @@ def main():
         "قرآن", "تلاوة", "عمار_الخطيب", "اسلام", "Shorts",
         f"سورة_{name}", "قرآن_كريم", "تلاوات",
     ]
+    if long_url:
+        # surface the long-form id in tags so YouTube can associate the two
+        import re as _re
+        _m = _re.search(r"v=([A-Za-z0-9_-]{11})", long_url)
+        if _m:
+            tags.append(f"vid_{_m.group(1)}")
+
 
     body = {
         "snippet": {
