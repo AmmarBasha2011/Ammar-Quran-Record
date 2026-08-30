@@ -269,47 +269,6 @@ SCRIPT = """\
   // run on load (text is embedded, so no network delay)
   if(document.readyState!=='loading') fillAllTexts();
   else document.addEventListener('DOMContentLoaded',fillAllTexts);
-
-  // ---- deep link #024-001 -> auto select + scroll + play ----
-  function goAyah(){
-    var h=location.hash.match(/^#a([0-9]{3})-([0-9]{3})$/);
-    if(!h) return;
-    var num=parseInt(h[1],10), aya=parseInt(h[2],10);
-    var card=document.querySelector('.surah[data-num="'+num+'"]');
-    if(!card) return;
-    // Open the surah (works in real browsers; harmless if details already open)
-    card.setAttribute('open','');
-    card.open=true;
-    // Fill the surah texts immediately. Use getElementById directly (the ayah
-    // nodes exist in the DOM even when the <details> is closed), so this works
-    // regardless of whether the toggle event fires.
-    var key=h[1];
-    for(var i=1; i<= (card.querySelectorAll('.ayah').length||0); i++){
-      var elx=document.getElementById('a'+key+'-'+('000'+i).slice(-3));
-      if(elx && elx.querySelector('.a-txt[data-load]')) fillText(num,i,elx);
-    }
-    function focusAyah(tries){
-      tries=tries||0;
-      var el=document.getElementById('a'+key+'-'+h[2]);
-      if(!el){
-        if(tries<10) setTimeout(function(){focusAyah(tries+1);},150);
-        return;
-      }
-      if(el.querySelector('.a-txt[data-load]')) fillText(num,aya,el);
-      el.classList.add('active');
-      el.scrollIntoView({behavior:'smooth',block:'center'});
-      var a=el.querySelector('audio');
-      if(a) a.play().catch(function(){});
-    }
-    setTimeout(function(){focusAyah(0);},150);
-  }
-  window.addEventListener('hashchange',goAyah);
-  window.addEventListener('load',goAyah);
-  // The script is at the end of <body>, so the DOM is already parsed.
-  // Call goAyah directly (guard against double-run) so the deep link works
-  // even if DOMContentLoaded/load already fired before this script ran.
-  if(document.readyState!=='loading') goAyah();
-  else document.addEventListener('DOMContentLoaded',goAyah);
 </script>
 </body>
 </html>
