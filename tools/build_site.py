@@ -304,9 +304,10 @@ html = (HEAD_CSS
         .replace("__TOTAL_S__", str(total_s))
         .replace("__TOTAL_AYAT__", str(total))
         .replace("__CARDS__", "".join(cards))
+        + SCRIPT
         .replace("__META__", json.dumps(surah_meta, ensure_ascii=False))
-        .replace("__RAW__", raw)
-        + SCRIPT.replace("__TEXTS__", json.dumps(offline_texts, ensure_ascii=False)))
+        .replace("__TEXTS__", json.dumps(offline_texts, ensure_ascii=False))
+        .replace("__RAW__", raw))
 
 os.makedirs("site", exist_ok=True)
 open("site/index.html", "w", encoding="utf-8").write(html)
