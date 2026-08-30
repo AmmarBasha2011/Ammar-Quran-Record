@@ -803,7 +803,11 @@
   }
   window.addEventListener('hashchange',goAyah);
   window.addEventListener('load',goAyah);
-  document.addEventListener('DOMContentLoaded',goAyah);
+  // The script is at the end of <body>, so the DOM is already parsed.
+  // Call goAyah directly (guard against double-run) so the deep link works
+  // even if DOMContentLoaded/load already fired before this script ran.
+  if(document.readyState!=='loading') goAyah();
+  else document.addEventListener('DOMContentLoaded',goAyah);
 </script>
 </body>
 </html>
