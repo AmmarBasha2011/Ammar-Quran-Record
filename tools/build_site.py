@@ -28,7 +28,7 @@ surahs = av.get("surahs", {})
 total = av.get("total_ayat", 0)
 total_s = len(surahs)
 
-# local fallback for ayah text
+# local fallback for ayah text — also embedded offline into the page
 try:
     _idx = json.load(open("tools/quran_norm_index.json", encoding="utf-8"))
     def ayah_text_local(key, a):
@@ -37,8 +37,20 @@ try:
         except Exception:
             return ""
 except Exception:
+    _idx = {}
     def ayah_text_local(key, a):
         return ""
+
+# Build a compact offline bundle: only published surahs, texts only (no extra keys)
+offline_texts = {}
+for key in sorted(surahs, key=int):
+    if key in _idx:
+        n = surahs[key].get("ayahs", 0)
+        texts = _idx[key].get("texts", [])[:n]
+        # pad if somehow short
+        while len(texts) < n:
+            texts.append("")
+        offline_texts[key] = texts
 
 # Build a quick name/number index so the client can resolve search + deep-link
 surah_meta = {}
@@ -189,7 +201,7 @@ __CARDS__
 SCRIPT = """\
 <script>
   var META = __META__;
-  var LOCAL = __LOCAL__;
+  var TEXTS = __TEXTS__;   // offline Quran text bundle (embedded)
   var raw = "__RAW__";
 
   // ---- search filter ----
@@ -209,43 +221,34 @@ SCRIPT = """\
   }
   q.addEventListener('input',filter); filter();
 
-  // ---- Quran.com API verse text (with local fallback) ----
-  var cache={};
-  function loadText(surah,ayah,el){
-    var key=surah+'-'+ayah;
+  // ---- verse text: OFFLINE first (embedded), API only as fallback ----
+  function fillText(surah,ayah,el){
     var box=el.querySelector('.a-txt');
-    if(LOCAL[surah] && LOCAL[surah][ayah-1]){
-      box.textContent=LOCAL[surah][ayah-1];
-      box.removeAttribute('data-load'); return;
-    }
-    if(cache[key]!==undefined){ box.textContent=cache[key]; box.removeAttribute('data-load'); return; }
+    var t=null;
+    if(TEXTS[surah] && TEXTS[surah][ayah-1]) t=TEXTS[surah][ayah-1];
+    if(t){ box.textContent=t; box.removeAttribute('data-load'); return; }
+    // fallback: fetch from Quran.com API (needs internet)
     box.innerHTML='<span class="loading">⏳ تحميل النص…</span>';
     fetch('https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number='+surah)
       .then(function(r){return r.json();})
       .then(function(d){
-        if(d.verses){
-          d.verses.forEach(function(v){
-            var p=v.verse_key.split(':');
-            cache[p[0]+'-'+p[1]]=v.text_uthmani;
-          });
-        }
-        box.textContent=cache[key]||'—';
+        if(d.verses) d.verses.forEach(function(v){
+          var p=v.verse_key.split(':');
+          if(!TEXTS[p[0]]) TEXTS[p[0]]=[];
+          TEXTS[p[0]][p[1]-1]=v.text_uthmani;
+        });
+        box.textContent=(TEXTS[surah]&&TEXTS[surah][ayah-1])?TEXTS[surah][ayah-1]:'—';
         box.removeAttribute('data-load');
       })
-      .catch(function(){
-        box.textContent='—';
-        box.removeAttribute('data-load');
-      });
+      .catch(function(){ box.textContent='—'; box.removeAttribute('data-load'); });
   }
 
   // load text lazily when a surah opens
   list.addEventListener('toggle',function(e){
     if(e.target && e.target.tagName==='DETAILS' && e.target.open){
-      var key=e.target.dataset.key;
-      var surah=+e.target.dataset.num;
       [].slice.call(e.target.querySelectorAll('.a-txt[data-load]')).forEach(function(box){
-        var ayah=+box.closest('.ayah').dataset.ayah;
-        loadText(surah,ayah,box.closest('.ayah'));
+        var ayahEl=box.closest('.ayah');
+        fillText(+e.target.dataset.num,+ayahEl.dataset.ayah,ayahEl);
       });
     }
   },true);
@@ -262,9 +265,8 @@ SCRIPT = """\
       tries=tries||0;
       var el=document.getElementById('a'+h[1]+'-'+h[2]);
       if(!el){ if(tries<8) setTimeout(function(){focusAyah(tries+1);},200); return; }
-      // ensure text loaded
       var box=el.querySelector('.a-txt[data-load]');
-      if(box) loadText(num,aya,el);
+      if(box) fillText(num,aya,el);
       el.classList.add('active');
       el.scrollIntoView({behavior:'smooth',block:'center'});
       var a=el.querySelector('audio');
@@ -285,9 +287,8 @@ html = (HEAD_CSS
         .replace("__TOTAL_AYAT__", str(total))
         .replace("__CARDS__", "".join(cards))
         .replace("__META__", json.dumps(surah_meta, ensure_ascii=False))
-        .replace("__LOCAL__", json.dumps({}, ensure_ascii=False))  # text fetched live from API
         .replace("__RAW__", raw)
-        + SCRIPT)
+        + SCRIPT.replace("__TEXTS__", json.dumps(offline_texts, ensure_ascii=False)))
 
 os.makedirs("site", exist_ok=True)
 open("site/index.html", "w", encoding="utf-8").write(html)
