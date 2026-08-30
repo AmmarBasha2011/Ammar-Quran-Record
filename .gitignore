@@ -31,3 +31,4 @@ recut_bad_ayahs.py
 recut_fast.py
 colab_whisperx_template.py
 playlist_raw.txt
+node_modules/
