@@ -731,22 +731,27 @@
   q.addEventListener('input',filter); filter();
 
   // ---- verse text: OFFLINE first (embedded), API only as fallback ----
+  // NOTE: must never throw — a thrown error here would stop the whole script
+  // (including the deep-link handler). Guard fetch in try/catch.
   function fillText(surah,ayah,el){
+    // normalise surah key: TEXTS is keyed by zero-padded string e.g. "024"
+    var key=('000'+surah).slice(-3);
     var box=el.querySelector('.a-txt');
-    var t=null;
-    if(TEXTS[surah] && TEXTS[surah][ayah-1]) t=TEXTS[surah][ayah-1];
+    var t=(TEXTS[key] && TEXTS[key][ayah-1]!=null) ? TEXTS[key][ayah-1] : '';
     if(t){ box.textContent=t; box.removeAttribute('data-load'); return; }
-    // fallback: fetch from Quran.com API (needs internet)
+    // text not in offline bundle — try API, but never throw
+    if(typeof fetch==='undefined'){ box.textContent='—'; box.removeAttribute('data-load'); return; }
     box.innerHTML='<span class="loading">⏳ تحميل النص…</span>';
     fetch('https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number='+surah)
       .then(function(r){return r.json();})
       .then(function(d){
         if(d.verses) d.verses.forEach(function(v){
           var p=v.verse_key.split(':');
-          if(!TEXTS[p[0]]) TEXTS[p[0]]=[];
-          TEXTS[p[0]][p[1]-1]=v.text_uthmani;
+          var pk=('000'+p[0]).slice(-3);
+          if(!TEXTS[pk]) TEXTS[pk]=[];
+          TEXTS[pk][p[1]-1]=v.text_uthmani;
         });
-        box.textContent=(TEXTS[surah]&&TEXTS[surah][ayah-1])?TEXTS[surah][ayah-1]:'—';
+        box.textContent=(TEXTS[key]&&TEXTS[key][ayah-1])?TEXTS[key][ayah-1]:'—';
         box.removeAttribute('data-load');
       })
       .catch(function(){ box.textContent='—'; box.removeAttribute('data-load'); });
@@ -781,25 +786,31 @@
     var num=parseInt(h[1],10), aya=parseInt(h[2],10);
     var card=document.querySelector('.surah[data-num="'+num+'"]');
     if(!card) return;
+    // Open the surah (works in real browsers; harmless if details already open)
+    card.setAttribute('open','');
     card.open=true;
-    // Programmatic open does NOT fire the 'toggle' event, so fill the surah
-    // texts explicitly (offline, so this is instant — no network needed).
-    [].slice.call(card.querySelectorAll('.a-txt[data-load]')).forEach(function(box){
-      var ayahEl=box.closest('.ayah');
-      fillText(num,+ayahEl.dataset.ayah,ayahEl);
-    });
+    // Fill the surah texts immediately. Use getElementById directly (the ayah
+    // nodes exist in the DOM even when the <details> is closed), so this works
+    // regardless of whether the toggle event fires.
+    var key=h[1];
+    for(var i=1; i<= (card.querySelectorAll('.ayah').length||0); i++){
+      var elx=document.getElementById('a'+key+'-'+('000'+i).slice(-3));
+      if(elx && elx.querySelector('.a-txt[data-load]')) fillText(num,i,elx);
+    }
     function focusAyah(tries){
       tries=tries||0;
-      var el=document.getElementById('a'+h[1]+'-'+h[2]);
-      if(!el){ if(tries<8) setTimeout(function(){focusAyah(tries+1);},200); return; }
-      // ensure this ayah's text is filled (in case it was added late)
+      var el=document.getElementById('a'+key+'-'+h[2]);
+      if(!el){
+        if(tries<10) setTimeout(function(){focusAyah(tries+1);},150);
+        return;
+      }
       if(el.querySelector('.a-txt[data-load]')) fillText(num,aya,el);
       el.classList.add('active');
       el.scrollIntoView({behavior:'smooth',block:'center'});
       var a=el.querySelector('audio');
       if(a) a.play().catch(function(){});
     }
-    setTimeout(function(){focusAyah(0);},250);
+    setTimeout(function(){focusAyah(0);},150);
   }
   window.addEventListener('hashchange',goAyah);
   window.addEventListener('load',goAyah);
