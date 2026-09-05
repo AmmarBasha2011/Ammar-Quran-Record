@@ -67,7 +67,7 @@ def main():
     if os.path.exists(video_path):
         video_size = os.path.getsize(video_path)
         # Upload to GitHub Release and get download URL
-        video_url = upload_to_release(video_path, key, start, end)
+        video_url = upload_to_release(video_path, key, int(start), int(end))
 
     payload = {
         "link": raw_url,
