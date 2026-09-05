@@ -79,5 +79,7 @@ jobs:
           echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
 
       - name: Send Short metadata to webhook
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python tools/send_webhook.py "https://flow.sokt.io/func/scri445wtgHf"
