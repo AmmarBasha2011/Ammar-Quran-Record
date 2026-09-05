@@ -115,11 +115,16 @@ def upload_to_release(video_path, key, start, end):
     Returns the browser_download_url, or empty string on failure.
     """
     import subprocess
+    import shutil
 
     release_tag = "latest-short"
-    asset_name = f"short-{key}-{start:03d}-{end:03d}.mp4"
+    asset_name = f"short-surah-{key}-{start:03d}-{end:03d}.mp4"
 
     try:
+        # Copy video to temp file with better name
+        tmp_path = os.path.join("build", asset_name)
+        shutil.copy2(video_path, tmp_path)
+
         # Create release if it doesn't exist (silent if already exists)
         subprocess.run(
             ["gh", "release", "create", release_tag,
@@ -131,8 +136,8 @@ def upload_to_release(video_path, key, start, end):
 
         # Upload (overwrite existing asset with same name)
         result = subprocess.run(
-            ["gh", "release", "upload", release_tag, video_path,
-             "--clobber", "--name", asset_name],
+            ["gh", "release", "upload", release_tag, tmp_path,
+             "--clobber"],
             capture_output=True, text=True, timeout=60
         )
 
@@ -140,7 +145,7 @@ def upload_to_release(video_path, key, start, end):
             print(f"Release upload warning: {result.stderr[:200]}")
             return ""
 
-        # Get the download URL
+        # Get the download URL (the mp4 asset)
         result = subprocess.run(
             ["gh", "release", "view", release_tag, "--json", "assets"],
             capture_output=True, text=True, timeout=30
