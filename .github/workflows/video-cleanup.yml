@@ -1,0 +1,37 @@
+name: Video Cleanup (remove short + release after upload)
+
+# Runs 5 minutes after video-autopost.yml completes.
+# Deletes the "latest-short" release and its video asset
+# so the next autopost run starts fresh.
+
+on:
+  workflow_run:
+    workflows: ["Video Autopost (random surah -> webhook)"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    # Only run if the autopost workflow succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait 5 minutes (let YouTube upload finish)
+        run: |
+          echo "Waiting 5 minutes for YouTube upload to complete..."
+          sleep 300
+
+      - name: Delete latest-short release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Deleting 'latest-short' release..."
+          gh release delete latest-short --yes 2>/dev/null || echo "Release not found (already deleted)"
+
+      - name: Cleanup complete
+        run: echo "✅ Release 'latest-short' deleted. Next autopost will create a fresh one."

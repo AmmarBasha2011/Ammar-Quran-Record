@@ -129,8 +129,7 @@ def upload_to_release(video_path, key, start, end):
         subprocess.run(
             ["gh", "release", "create", release_tag,
              "--title", "Latest Short",
-             "--notes", "Auto-generated Short video (overwritten each run)",
-             "--latest"],
+             "--notes", "Auto-generated Short video (overwritten each run)"],
             capture_output=True, text=True, timeout=30
         )
 
