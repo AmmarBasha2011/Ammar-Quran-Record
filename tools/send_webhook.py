@@ -34,9 +34,33 @@ def main():
         f"/AmmarBasha2011/Ammar-Quran-Record/main/{key}/{int(start):03d}.mp3"
     )
 
-    # Short name (title) — NO ayah range to avoid encoding issues
+    # Short name (title) — beautiful, clickable, NO ayah range (encoding)
     reciter = "عمار الخطيب"
-    short_name = f"🎧 سورة {name} | تلاوة {reciter}"
+    # inspiring title templates (randomly picked each run)
+    title_templates = [
+        f"🤲 {name} هتساعدك تنام الليلة",
+        f"💎 آيات من {name} لو سمعتها هتفهم ليه بنعيش",
+        f"🕊️ {name} — لما الدنيا تِضيق بيك",
+        f"🌙 سورة {name} بصوت هادي مالوش زي",
+        f"🤍 {name} — حاجة جميلة ليومك",
+        f"😮 سورة {name} اللي محدش بيسمعها بتركيز",
+        f"💛 سورة {name} — خد بريك من اللي بيحصلك",
+        f"🫶 {name} بصوت عمار الخطيب",
+        f"🌿 سورة {name} — هتروق أي قلبك",
+        f"❤️ {name} — استمع قبل ما تفوتك",
+        f"✨ سورة {name} — بداية حلوة لليوم",
+        f"🕊️ {name} — ساعة القرآن",
+        f"💎 {name} — لو بتحب تسمع حلو",
+        f"🤲 {name} — عايز تطلع من الدنيا دي؟",
+        f"🌙 {name} بصوت هادي — اسمع بقلبك",
+        f"😊 {name} — الجمال اللي كنت مستنّيه",
+        f"🫶 {name} — اسمع وهتفهم",
+        f"💛 {name} — بصوت عمار الخطيب 🎧",
+        f"🤍 {name} — رسالتك النهارده",
+        f"🌿 {name} — دقيقة من السلام",
+    ]
+    import random
+    short_name = random.choice(title_templates)
 
     # Short description — ayah range stays here (full context for YouTube)
     if start == end:
