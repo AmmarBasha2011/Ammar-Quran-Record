@@ -1,14 +1,13 @@
-name: Video Autopost (random surah -> YouTube Short)
+name: Video Autopost (random surah -> webhook)
 
 # Generates a vertical (9:16) YouTube Short from a random surah/ayah range
-# using repo audio + backgrounds, then uploads it DIRECTLY to YouTube
-# (no middleman / no webhook). Runs every 4 hours to stay under the
-# YouTube Data API daily quota (10,000 units; one upload = 1600 units).
+# using repo audio + backgrounds, then sends metadata to the sokt.io webhook
+# for YouTube upload (no direct YouTube API). Runs every 30 minutes.
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # every 4 hours -> ~6 uploads/day (safe quota)
-  workflow_dispatch:        # manual trigger from Actions tab
+    - cron: "*/30 * * * *"   # every 30 minutes
+  workflow_dispatch:         # manual trigger from Actions tab
 
 permissions:
   contents: read
@@ -26,10 +25,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install ffmpeg + youtube libs
-        run: |
-          sudo apt-get update && sudo apt-get install -y ffmpeg
-          pip install --quiet google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Pick random surah + ayah range
         id: pick
@@ -80,12 +77,6 @@ jobs:
             build/video.mp4
           echo "video built: $(ls -la build/video.mp4 | awk '{print $5}') bytes"
 
-      - name: Upload Short directly to YouTube
-        env:
-          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
-          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
-          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      - name: Send Short metadata to webhook
         run: |
-          KEY=$(sed -n 1p pick.txt); NAME=$(sed -n 2p pick.txt)
-          START=$(sed -n 3p pick.txt); END=$(sed -n 4p pick.txt)
-          python tools/upload_youtube.py "$KEY" "$NAME" "$START" "$END"
+          python tools/send_webhook.py "https://flow.sokt.io/func/scri445wtgHf"
