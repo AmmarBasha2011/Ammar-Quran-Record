@@ -10,7 +10,8 @@ on:
   workflow_dispatch:         # manual trigger from Actions tab
 
 permissions:
-  contents: read
+  contents: write   # needed for GitHub Release upload
+  actions: read
 
 jobs:
   make-video:

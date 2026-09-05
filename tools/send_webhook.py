@@ -5,6 +5,9 @@ Reads pick.txt (KEY, NAME, START, END) and the built build/video.mp4,
 computes the raw GitHub mp3 link, title, description, tags,
 and POSTs a JSON payload to the configured webhook URL.
 
+The video MP4 is uploaded to a GitHub Release ("latest-short") so the
+downstream n8n workflow can download it for YouTube upload.
+
 Usage (run from repo root):
   python tools/send_webhook.py [webhook_url]
 If no argument, uses env SOKT_WEBHOOK_URL.
@@ -31,17 +34,16 @@ def main():
         f"/AmmarBasha2011/Ammar-Quran-Record/main/{key}/{int(start):03d}.mp3"
     )
 
-    # Ayah label
+    # Short name (title) — NO ayah range to avoid encoding issues
+    reciter = "عمار الخطيب"
+    short_name = f"🎧 سورة {name} | تلاوة {reciter}"
+
+    # Short description — ayah range stays here (full context for YouTube)
     if start == end:
         ayah_label = f"الآية {start}"
     else:
-        ayah_label = f"الآيات {start}–{end}"
+        ayah_label = f"من الآية {start} إلى الآية {end}"
 
-    # Short name (title)
-    short_name = f"🎧 سورة {name} | {ayah_label} | تلاوة عمار الخطيب"
-
-    # Short description
-    reciter = "عمار الخطيب"
     short_description = (
         f"تلاوة مباركة بصوت القارئ {reciter} ✨\n"
         f"📖 سورة {name} ({key}) — {ayah_label}\n\n"
@@ -52,21 +54,24 @@ def main():
         f"🤲 اللهم اجعل القرآن ربيع قلوبنا. شاركه مع من تحب."
     )
 
-    # Short tags
+    # Short tags — no ayah range in tags either
     short_tags = [
         "قرآن", "تلاوة", "عمار_الخطيب", "اسلام", "Shorts",
         f"سورة_{name}", "قرآن_كريم", "تلاوات",
-        ayah_label.replace("–", "_").replace(" ", "_"),
     ]
 
     # File size info (if video was built)
     video_size = 0
     video_path = os.path.join("build", "video.mp4")
+    video_url = ""
     if os.path.exists(video_path):
         video_size = os.path.getsize(video_path)
+        # Upload to GitHub Release and get download URL
+        video_url = upload_to_release(video_path, key, start, end)
 
     payload = {
         "link": raw_url,
+        "video_url": video_url,
         "name": short_name,
         "description": short_description,
         "tags": short_tags,
@@ -101,6 +106,58 @@ def main():
         sys.exit(1)
 
     print("Webhook delivered ✓")
+
+
+def upload_to_release(video_path, key, start, end):
+    """Upload build/video.mp4 to GitHub Release 'latest-short' and return URL.
+
+    Uses `gh release upload --clobber' so the asset is replaced each run.
+    Returns the browser_download_url, or empty string on failure.
+    """
+    import subprocess
+
+    release_tag = "latest-short"
+    asset_name = f"short-{key}-{start:03d}-{end:03d}.mp4"
+
+    try:
+        # Create release if it doesn't exist (silent if already exists)
+        subprocess.run(
+            ["gh", "release", "create", release_tag,
+             "--title", "Latest Short",
+             "--notes", "Auto-generated Short video (overwritten each run)",
+             "--latest"],
+            capture_output=True, text=True, timeout=30
+        )
+
+        # Upload (overwrite existing asset with same name)
+        result = subprocess.run(
+            ["gh", "release", "upload", release_tag, video_path,
+             "--clobber", "--name", asset_name],
+            capture_output=True, text=True, timeout=60
+        )
+
+        if result.returncode != 0:
+            print(f"Release upload warning: {result.stderr[:200]}")
+            return ""
+
+        # Get the download URL
+        result = subprocess.run(
+            ["gh", "release", "view", release_tag, "--json", "assets"],
+            capture_output=True, text=True, timeout=30
+        )
+        if result.returncode == 0:
+            assets = json.loads(result.stdout).get("assets", [])
+            for asset in assets:
+                if asset.get("name") == asset_name:
+                    url = asset.get("url", "")
+                    print(f"Video uploaded: {url}")
+                    return url
+
+        return ""
+
+    except Exception as e:
+        print(f"Release upload failed: {e}")
+        return ""
 
 
 if __name__ == "__main__":
