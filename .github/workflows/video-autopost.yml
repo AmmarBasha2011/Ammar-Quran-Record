@@ -6,7 +6,7 @@ name: Video Autopost (random surah -> webhook)
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 minutes
+    - cron: "0 */2 * * *"   # Run every 2 hours at minute 0
   workflow_dispatch:         # manual trigger from Actions tab
 
 permissions:
